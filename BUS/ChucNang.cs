@@ -52,11 +52,11 @@ namespace BUS
         /// </summary>
         /// <param name="tb"></param>
         /// <param name="tenHang"></param>
-        public void GetDataRowHang(DataTable tb, string tenHang)
+        public void GetDataRowHang(DataTable tb, string tenHang, int MaBanh)
         {
             DataRow row = tb.NewRow();
             DataProvider dp = new DataProvider();
-            SqlDataAdapter adapter = new SqlDataAdapter("Select MaHang, TenHang, MaLoai, SoLuong = 1, GiaHang from Hang Where TenHang = N'" + tenHang.ToString() + "'", dp.cnn);
+            SqlDataAdapter adapter = new SqlDataAdapter("Select MaBanh = '" + MaBanh + "', MaHang, TenHang, MaLoai, SoLuong = 1, GiaHang from Hang Where TenHang = N'" + tenHang.ToString() + "'", dp.cnn);
 
             adapter.Fill(tb);
 
@@ -66,14 +66,14 @@ namespace BUS
         /// </summary>
         /// <param name="tb"></param>
         /// <param name="tenHang"></param>
-        public void RemoveGetDataRowHang(DataTable tb, string tenHang)
+        public void RemoveGetDataRowHang(DataTable tb, string tenHang, int maBanh)
         {   
-            foreach(DataRow ros in tb.Rows)
+            foreach (DataRow ros in tb.Rows)
             {
-                if (ros["TenHang"].ToString() == tenHang)
+                if (ros["TenHang"].ToString() == tenHang && ros["MaBanh"].ToString() == maBanh.ToString())
                 {
                     tb.Rows.Remove(ros);
-                    return;    
+                    return;
                 }
             }
         }
@@ -83,26 +83,65 @@ namespace BUS
         /// <param name="tb"></param>
         /// <param name="tenHang"></param>
         /// <param name="SoLuong"></param>
-        public void GetDataRowNuoc(DataTable tb, string tenHang, int SoLuong)
+        public void GetDataRowNuoc(DataTable tb, string tenHang, int SoLuong, int MaBanh)
         {
             DataRow row = tb.NewRow();
             DataProvider dp = new DataProvider();
-            SqlDataAdapter adapter = new SqlDataAdapter("Select MaHang, TenHang, MaLoai, SoLuong = '" + SoLuong.ToString() + "' , GiaHang from Hang Where TenHang = N'" + tenHang.ToString() + "'", dp.cnn);
+            SqlDataAdapter adapter = new SqlDataAdapter("Select MaBanh = '" + MaBanh + "', MaHang, TenHang, MaLoai, SoLuong = '" + SoLuong.ToString() + "' , GiaHang from Hang Where TenHang = N'" + tenHang.ToString() + "'", dp.cnn);
             adapter.Fill(tb);
         }
         /// <summary>
         /// Them bill vao listView
         /// </summary>
         /// <param name="bill"></param>
-        public void AddItem(Build bill, ListView listView1)
+        public void AddItemListView(Build bill, ListView listView1)
         {
-            ListViewItem pizza = new ListViewItem(bill.TenBanh);
+            ListViewItem pizza = new ListViewItem(bill.MaBanh.ToString());
+            pizza.SubItems.Add(bill.TenBanh);
             pizza.SubItems.Add(bill.TpPhu);
             pizza.SubItems.Add(bill.Size);
             pizza.SubItems.Add(bill.DeBanh + " " + bill.VienBanh);
             pizza.SubItems.Add(bill.ThucUong);
             pizza.SubItems.Add(bill.TongTien.ToString());
             listView1.Items.Add(pizza);
+        }
+        /// <summary>
+        /// Xóa những bánh nào đã được click
+        /// </summary>
+        /// <param name="list"></param>
+        public void XoaItemListView(DataTable tb, ListView listView1)
+        {
+            string maBanh = "";
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                if (listView1.Items[i].Selected)
+                {
+                    maBanh = listView1.Items[i].Text;
+                    listView1.Items[i].Remove();
+                }
+            }
+            for(int i = 0; i < tb.Rows.Count; i++)
+            {
+                string s = tb.Rows[i]["MaBanh"].ToString();
+                if (s == maBanh.ToString())
+                {
+                    tb.Rows.Remove(tb.Rows[i]);
+                    i--;
+                }
+            }
+        }
+        public int GetMaBanh()
+        {
+            
+            DataTable tb_DonHang_Banh = new DataProvider().GetDataTableDonHang_Banh();
+            int max = int.Parse(tb_DonHang_Banh.Rows[0][1].ToString());
+            foreach (DataRow row in tb_DonHang_Banh.Rows)
+            {
+                int value = int.Parse(row[1].ToString());
+                if (max < value)
+                    max = value;
+            }
+            return ++max;
         }
     }
 }

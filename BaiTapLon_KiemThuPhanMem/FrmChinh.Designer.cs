@@ -33,6 +33,7 @@
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ColumnHeader clmMaBanh;
             this.tab = new System.Windows.Forms.TabControl();
             this.tPgTen = new System.Windows.Forms.TabPage();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
@@ -148,6 +149,12 @@
             this.lblTienNuoc = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.MaBanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            clmMaBanh = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tab.SuspendLayout();
             this.tPgTen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
@@ -278,6 +285,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dataGridView2);
             this.panel1.Controls.Add(this.radRau);
             this.panel1.Controls.Add(this.radTom);
             this.panel1.Controls.Add(this.radThapCam);
@@ -1272,6 +1280,7 @@
             // 
             this.listView1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            clmMaBanh,
             this.clmTenBanh,
             this.clmThanhPhan,
             this.clmSize,
@@ -1560,27 +1569,67 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(1294, 72);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaBanh,
+            this.MaHang,
+            this.TenHang,
+            this.MaLoai,
+            this.SoLuong});
+            this.dataGridView1.Location = new System.Drawing.Point(33, 652);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(319, 277);
+            this.dataGridView1.Size = new System.Drawing.Size(692, 195);
             this.dataGridView1.TabIndex = 30;
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(1295, 375);
+            this.dataGridView2.Location = new System.Drawing.Point(345, 53);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(318, 251);
+            this.dataGridView2.Size = new System.Drawing.Size(471, 193);
             this.dataGridView2.TabIndex = 31;
+            // 
+            // MaBanh
+            // 
+            this.MaBanh.DataPropertyName = "MaBanh";
+            this.MaBanh.HeaderText = "Mã Bánh";
+            this.MaBanh.Name = "MaBanh";
+            // 
+            // MaHang
+            // 
+            this.MaHang.DataPropertyName = "MaHang";
+            this.MaHang.HeaderText = "Mã Hàng";
+            this.MaHang.Name = "MaHang";
+            // 
+            // TenHang
+            // 
+            this.TenHang.DataPropertyName = "TenHang";
+            this.TenHang.HeaderText = "Tên Hàng";
+            this.TenHang.Name = "TenHang";
+            // 
+            // MaLoai
+            // 
+            this.MaLoai.DataPropertyName = "MaLoai";
+            this.MaLoai.HeaderText = "Mã Loại";
+            this.MaLoai.Name = "MaLoai";
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.DataPropertyName = "SoLuong";
+            this.SoLuong.HeaderText = "Số Lượng";
+            this.SoLuong.Name = "SoLuong";
+            // 
+            // clmMaBanh
+            // 
+            clmMaBanh.Text = "MaBanh";
+            clmMaBanh.Width = 70;
             // 
             // FrmChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1625, 789);
-            this.Controls.Add(this.dataGridView2);
+            this.ClientSize = new System.Drawing.Size(1625, 1012);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblTienNuoc);
             this.Controls.Add(this.lblTienVoBanh);
@@ -1791,5 +1840,10 @@
         private System.Windows.Forms.Label lblTienTenBanh;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaBanh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaHang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenHang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLoai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
     }
 }
