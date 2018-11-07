@@ -17,7 +17,7 @@ namespace DAO
             cnn = new SqlConnection(cnnStr);
         }
         //---------------------------------------------------------------------------------------------------------------
-        // Lay 
+        // Lay  
         public DataSet GetDataSet()
         {
             // tao dataSet 
