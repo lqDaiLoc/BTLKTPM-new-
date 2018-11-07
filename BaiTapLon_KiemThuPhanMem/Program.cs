@@ -16,7 +16,7 @@ namespace BaiTapLon_KiemThuPhanMem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmChinh());
+            Application.Run(new FrmNhanVien());
         }
     }
 }
