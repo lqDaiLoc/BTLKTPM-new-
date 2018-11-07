@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TOD1
 {
-    class Customer
+    public class Customers
     {
     }
 }

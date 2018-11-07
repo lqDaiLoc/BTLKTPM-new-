@@ -17,10 +17,10 @@ namespace BaiTapLon_KiemThuPhanMem
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void FrmNhanVien_Load(object sender, EventArgs e)
         {
-            string format = "yyyy-MM-dd";
-            label6.Text = dateTimePicker1.Value.ToString(format);
+
         }
     }
 }
