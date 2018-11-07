@@ -16,7 +16,8 @@ namespace DAO
             string cnnStr = "Data Source=LAPTOP-RJRD8U96;Initial Catalog=QLBanPizza;Integrated Security=True";
             cnn = new SqlConnection(cnnStr);
         }
-//---------------------------------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------------------
+        // Lay  
         public DataSet GetDataSet()
         {
             // tao dataSet 
