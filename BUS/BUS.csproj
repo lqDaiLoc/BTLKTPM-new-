@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChucNang.cs" />
+    <Compile Include="EmployeesBUS.cs" />
     <Compile Include="LoginBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
