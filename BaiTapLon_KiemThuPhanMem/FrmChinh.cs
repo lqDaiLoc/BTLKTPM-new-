@@ -44,11 +44,12 @@ namespace BaiTapLon_KiemThuPhanMem
                 this.Enabled = true;
                 // Neu la Manager thi cho phep them 1 so chuc nang nua
                 // con ko phai la Manager thi chuc nang nhap tt khach va nhap tt nv ko dc mo~
-                if(frm.chucVu == "Supervisor")
+                string loai = frm.chucVu;
+                if (loai == "1")
                 {
                     btnNhapTTKhach.Enabled = true;
                     btnNhapTTNhanVien.Enabled = true;
-                } 
+                }
             }
         }
 //--------------------------------------------------------------------------------------------------------------------------------------

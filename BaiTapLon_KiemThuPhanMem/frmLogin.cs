@@ -30,10 +30,10 @@ namespace BaiTapLon_KiemThuPhanMem
             }
             else
             {
-                LoginBUS lg = new LoginBUS();
-                chucVu = lg.chucVu;
+                LoginBUS lg = new LoginBUS();                
                 if (lg.Login(txtDangNhap.Text, txtMatKhau.Text ))
                 {
+                    chucVu = lg.chucVu;
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
