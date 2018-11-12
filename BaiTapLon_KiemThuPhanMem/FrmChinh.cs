@@ -20,7 +20,7 @@ namespace BaiTapLon_KiemThuPhanMem
         {
             InitializeComponent();
         }
-        DataTable tb = new DataTable();
+        DataTable tbDonHang = new DataTable();
         DataTable tbtmp = new DataTable();
         BUS_ChucNang bus = new BUS_ChucNang();
         bool flag = true;
@@ -30,7 +30,7 @@ namespace BaiTapLon_KiemThuPhanMem
         double tienSize = 1;
         double tienTpPhu = 0;
         double tongTien = 0;
-        int MaBanh_;
+        int MaBanh_ = 0;
 
 
         private void FrmChinh_Load(object sender, EventArgs e)
@@ -64,10 +64,10 @@ namespace BaiTapLon_KiemThuPhanMem
             lblTienTenBanh.Text = tienLoaiPizza.ToString();
 
             if (rad.Checked == true)
-                bus.GetDataRowHang(tb, tenBanh, MaBanh_);
+                bus.GetDataRowHang(tbDonHang, tenBanh, MaBanh_);
             else
                 if (!rad.Checked && flag != false)
-                    bus.RemoveGetDataRowHang(tb, tenBanh,MaBanh_);
+                    bus.RemoveGetDataRowHang(tbDonHang, tenBanh,MaBanh_);
         }
 //--------------------------------------------------------------------------------------------------------------------------------------
         ////Chon Size
@@ -79,10 +79,10 @@ namespace BaiTapLon_KiemThuPhanMem
             lblTienSize.Text = "x" + tienSize.ToString();
 
             if (rad.Checked)
-                bus.GetDataRowHang(tb, rad.Text, MaBanh_);
+                bus.GetDataRowHang(tbDonHang, rad.Text, MaBanh_);
             else
                 if(!rad.Checked && flag != false)
-                    bus.RemoveGetDataRowHang(tb, rad.Text, MaBanh_);
+                    bus.RemoveGetDataRowHang(tbDonHang, rad.Text, MaBanh_);
         }
 //--------------------------------------------------------------------------------------------------------------------------------------
         //Chon nước uống
@@ -94,7 +94,7 @@ namespace BaiTapLon_KiemThuPhanMem
             txtSoLuongCoCa.Text = slCoCa.ToString();
             if (slCoCa != 0)
             {
-                bus.GetDataRowNuoc(tb, "CoCa", slCoCa, MaBanh_);
+                bus.GetDataRowNuoc(tbDonHang, "CoCa", slCoCa, MaBanh_);
                 lblThucUong.Text += "CoCa (" + slCoCa + ")\n";
                 tienNuoc += (bus.getTienHang("CoCa")) * slCoCa;
             }
@@ -102,7 +102,7 @@ namespace BaiTapLon_KiemThuPhanMem
             txtSoLuongSuprise.Text = slSuprise.ToString();
             if (slSuprise != 0)
             {
-                bus.GetDataRowNuoc(tb, "Suprise", slSuprise, MaBanh_);
+                bus.GetDataRowNuoc(tbDonHang, "Suprise", slSuprise, MaBanh_);
                 lblThucUong.Text += "Suprise (" + slSuprise + ")\n";
                 tienNuoc += (bus.getTienHang("Suprise")) * slSuprise;
             }
@@ -110,7 +110,7 @@ namespace BaiTapLon_KiemThuPhanMem
             txtSoLuongNumberOne.Text = slNumber1.ToString();
             if (slNumber1 != 0)
             {
-                bus.GetDataRowNuoc(tb, "Number One", slNumber1, MaBanh_);
+                bus.GetDataRowNuoc(tbDonHang, "Number One", slNumber1, MaBanh_);
                 lblThucUong.Text += "Number One (" + slNumber1 + ")\n";
                 tienNuoc += (bus.getTienHang("Number One")) * slNumber1;
             }
@@ -118,7 +118,7 @@ namespace BaiTapLon_KiemThuPhanMem
             txtSoLuongSuoi.Text = slSuoi.ToString();
             if (slSuoi != 0)
             {
-                bus.GetDataRowNuoc(tb, "Nước Suối", slSuoi, MaBanh_);
+                bus.GetDataRowNuoc(tbDonHang, "Nước Suối", slSuoi, MaBanh_);
                 lblThucUong.Text += "Nước Suối (" + slSuoi + ")\n";
                 tienNuoc += (bus.getTienHang("Nước Suối")) * slSuoi;
             }
@@ -126,7 +126,7 @@ namespace BaiTapLon_KiemThuPhanMem
             txtSoLuongDrThanh.Text = slDrThanh.ToString();
             if (slDrThanh != 0)
             {
-                bus.GetDataRowNuoc(tb, "DrThanh", slDrThanh, MaBanh_);
+                bus.GetDataRowNuoc(tbDonHang, "DrThanh", slDrThanh, MaBanh_);
                 lblThucUong.Text += "DrThanh (" + slDrThanh + ")\n";
                 tienNuoc += (bus.getTienHang("DrThanh")) * slDrThanh;
             }
@@ -134,7 +134,7 @@ namespace BaiTapLon_KiemThuPhanMem
             txtSoLuongPesi.Text = slPepsi.ToString();
             if (slPepsi != 0)
             {
-                bus.GetDataRowNuoc(tb, "Pepsi", slPepsi, MaBanh_);
+                bus.GetDataRowNuoc(tbDonHang, "Pepsi", slPepsi, MaBanh_);
                 lblThucUong.Text += "Pepsi (" + slPepsi + ")\n";
                 tienNuoc += (bus.getTienHang("Pepsi")) * slPepsi;
             }
@@ -142,7 +142,7 @@ namespace BaiTapLon_KiemThuPhanMem
             txtSoLuongCam.Text = slCam.ToString();
             if (slCam != 0)
             {
-                bus.GetDataRowNuoc(tb, "Cam", slCam, MaBanh_);
+                bus.GetDataRowNuoc(tbDonHang, "Cam", slCam, MaBanh_);
                 lblThucUong.Text += "Cam (" + slCam + ")\n";
                 tienNuoc += (bus.getTienHang("Cam")) * slCam;
             }
@@ -150,7 +150,7 @@ namespace BaiTapLon_KiemThuPhanMem
             txtSoLuongBiDao.Text = slBiDao.ToString();
             if (slBiDao != 0)
             {
-                bus.GetDataRowNuoc(tb, "Bí Đao", slBiDao, MaBanh_);
+                bus.GetDataRowNuoc(tbDonHang, "Bí Đao", slBiDao, MaBanh_);
                 lblThucUong.Text += "Bí Đao (" + slBiDao + ")\n";
                 tienNuoc += (bus.getTienHang("Bí Đao")) * slBiDao;
             }
@@ -158,7 +158,7 @@ namespace BaiTapLon_KiemThuPhanMem
             txtSoLuongSting.Text = slSting.ToString();
             if (slSting != 0)
             {
-                bus.GetDataRowNuoc(tb, "Sting", slSting, MaBanh_);
+                bus.GetDataRowNuoc(tbDonHang, "Sting", slSting, MaBanh_);
                 lblThucUong.Text += "Sting (" + slSting + ")\n";
                 tienNuoc += (bus.getTienHang("Sting")) * slSting;
             }
@@ -166,7 +166,7 @@ namespace BaiTapLon_KiemThuPhanMem
             txtSoLuongSoda.Text = slSoda.ToString();
             if (slSoda != 0)
             {
-                bus.GetDataRowNuoc(tb, "SoDa", slSoda, MaBanh_);
+                bus.GetDataRowNuoc(tbDonHang, "SoDa", slSoda, MaBanh_);
                 lblThucUong.Text += "SoDa (" + slSoda + ")\n";
                 tienNuoc += (bus.getTienHang("SoDa")) * slSoda;
             }
@@ -182,7 +182,7 @@ namespace BaiTapLon_KiemThuPhanMem
             if (check.Checked)
             {
                 flag = true;
-                bus.GetDataRowHang(tb, check.Text, MaBanh_);
+                bus.GetDataRowHang(tbDonHang, check.Text, MaBanh_);
                 lblTpPhu.Text += check.Text + ", ";
                 tienTpPhu += bus.getTienHang(check.Text);
             }
@@ -190,7 +190,7 @@ namespace BaiTapLon_KiemThuPhanMem
             {
                 if (!check.Checked && flag != false)
                 {
-                    bus.RemoveGetDataRowHang(tb, check.Text, MaBanh_);
+                    bus.RemoveGetDataRowHang(tbDonHang, check.Text, MaBanh_);
                     lblTpPhu.Text = lblTpPhu.Text.Replace(check.Text + ", ", "");
                     tienTpPhu -= bus.getTienHang(check.Text);
                 }
@@ -204,10 +204,10 @@ namespace BaiTapLon_KiemThuPhanMem
             RadioButton rad = sender as RadioButton;
             lblDeBanh.Text = "Đế Bánh " + rad.Text;
             if (rad.Checked)
-                bus.GetDataRowHang(tb, rad.Text, MaBanh_);
+                bus.GetDataRowHang(tbDonHang, rad.Text, MaBanh_);
             else
                 if (!rad.Checked && flag)
-                    bus.RemoveGetDataRowHang(tb, rad.Text, MaBanh_);
+                    bus.RemoveGetDataRowHang(tbDonHang, rad.Text, MaBanh_);
         }
         //--------------------------------------------------------------------------------------------------------------------------------------
         // Chon Vien Banh
@@ -218,14 +218,14 @@ namespace BaiTapLon_KiemThuPhanMem
             if (rad.Checked)
             {   
                 tienVoBanh = bus.getTienHang(rad.Text);
-                bus.GetDataRowHang(tb, rad.Text, MaBanh_);
+                bus.GetDataRowHang(tbDonHang, rad.Text, MaBanh_);
             }
             else
             {
                 if(!rad.Checked && flag)
                 {
                     tienVoBanh -= bus.getTienHang(rad.Text);
-                    bus.RemoveGetDataRowHang(tb, rad.Text, MaBanh_);
+                    bus.RemoveGetDataRowHang(tbDonHang, rad.Text, MaBanh_);
                 }
             }
             lblTienVoBanh.Text = tienVoBanh.ToString();
@@ -255,9 +255,7 @@ namespace BaiTapLon_KiemThuPhanMem
                         
             
         }
-//--------------------------------------------------------------------------------------------------------------------------------------
-
-        
+//--------------------------------------------------------------------------------------------------------------------------------------       
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (lblTenBanh.Text != "")
@@ -268,9 +266,9 @@ namespace BaiTapLon_KiemThuPhanMem
 
                 //Test Up dataTable lên gridView để dễ xem và kiểm xoát  --- Sẽ Xóa
                 //----------------------------------------------------------------------------------------------------------
-                dataGridView1.DataSource = tb;
-                tbtmp = tb;
-                dataGridView2.DataSource = tbtmp;
+                dataGridView1.DataSource = tbDonHang;
+                tbtmp = tbDonHang;
+                
                 //----------------------------------------------------------------------------------------------------------
 
                 MaBanh_++;
@@ -312,18 +310,15 @@ namespace BaiTapLon_KiemThuPhanMem
             
             // Thành phần phũ 
         }
-
-        
-
         private void btnXoaBill_Click(object sender, EventArgs e)
         {
-            bus.XoaItemListView(tb,listView1);
+            bus.XoaItemListView(tbDonHang,listView1);
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-
-            dataGridView1.DataSource = tb;
+            bus.ThemHoaDon(txtNhanVien.Text, txtKhach.Text, tbDonHang, listView1);
+            dataGridView1.DataSource = tbDonHang;
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e) { }

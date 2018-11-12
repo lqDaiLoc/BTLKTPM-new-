@@ -14,8 +14,8 @@ namespace DAO
         public DataProvider()
         {
             //string cnnStr = "Data Source=TrungHieuIT\\SQLEXPRESS;Initial Catalog=QLBanPizza;Integrated Security=True";
-            string cnnStr = "Data Source=LAPTOP-RJRD8U96;Initial Catalog=QLBanPizza;Integrated Security=True";
-
+            //string cnnStr = "Data Source=LAPTOP-RJRD8U96;Initial Catalog=QLBanPizza;Integrated Security=True";
+            string cnnStr = "Data Source=LAPTOP-RJRD8U96;Initial Catalog=QLBanPizzaNew;Integrated Security=True";
             cnn = new SqlConnection(cnnStr);
         }
         //---------------------------------------------------------------------------------------------------------------
@@ -47,7 +47,9 @@ namespace DAO
             da.Fill(data, "Loai");
             da.SelectCommand.CommandText = "Select * from Users";
             da.Fill(data, "Users");
-            
+            da.SelectCommand.CommandText = "Select * from ChiTietBanh";
+            da.Fill(data, "ChiTietBanh");
+
             return data;            
         }
 //---------------------------------------------------------------------------------------------------------------
@@ -114,7 +116,14 @@ namespace DAO
             DataTable tb = data.Tables["Users"];
             return tb;
         }
-//---------------------------------------------------------------------------------------------------------------
+        // lay table ChiTietBanh
+        public DataTable GetDataTableChiTietBanh()
+        {
+            DataSet data = GetDataSet();
+            DataTable tb = data.Tables["ChiTietBanh"];
+            return tb;
+        }
+        //---------------------------------------------------------------------------------------------------------------
         // update
         // update Table Banh
         public void updateTableBanh(DataTable tb)
@@ -137,7 +146,15 @@ namespace DAO
             SqlCommandBuilder scb = new SqlCommandBuilder(da);
             da.Update(tb);
         }
-//---------------------------------------------------------------------------------------------------------------
+        // updata Table chi tiet Banh
+        public void updateTableChiTietBanh(DataTable tb)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM ChiTietBanh", cnn);
+            SqlCommandBuilder scb = new SqlCommandBuilder(da);
+            da.Update(tb);
+        }
+
+        //---------------------------------------------------------------------------------------------------------------
         // ConnecTion
         public void ConnecTion()
         {
