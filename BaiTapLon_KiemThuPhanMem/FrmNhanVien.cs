@@ -40,7 +40,7 @@ namespace BaiTapLon_KiemThuPhanMem
             ngaySinh = NgaySinh.Value.ToString(format);
             ngayThue = NgayBDLam.Value.ToString(format);
             Employees em = new Employees(id, ho, ten, ngaySinh, gioiTinh, chucVu, ngayThue, diaChi, SDT);
-            bus.Them(TbEm, em);
+            //bus.Them(TbEm, em);
             
         }
     }

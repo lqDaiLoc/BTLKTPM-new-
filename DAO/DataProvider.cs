@@ -13,7 +13,9 @@ namespace DAO
         public SqlConnection cnn;
         public DataProvider()
         {
-            string cnnStr = "Data Source=TrungHieuIT\\SQLEXPRESS;Initial Catalog=QLBanPizza;Integrated Security=True";
+            //string cnnStr = "Data Source=TrungHieuIT\\SQLEXPRESS;Initial Catalog=QLBanPizza;Integrated Security=True";
+            string cnnStr = "Data Source=LAPTOP-RJRD8U96;Initial Catalog=QLBanPizza;Integrated Security=True";
+
             cnn = new SqlConnection(cnnStr);
         }
         //---------------------------------------------------------------------------------------------------------------
