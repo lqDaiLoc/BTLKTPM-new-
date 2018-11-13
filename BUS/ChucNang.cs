@@ -14,7 +14,7 @@ namespace BUS
     public class BUS_ChucNang
     {
 
-        
+
         /// <summary>
         /// lay gia tien cua ten banh
         /// </summary>
@@ -27,8 +27,8 @@ namespace BUS
             dp.ConnecTion();
             DataTable tb_Banh = dp.GetDataTableHang();
             try
-            {   
-                foreach(DataRow row in tb_Banh.Rows)
+            {
+                foreach (DataRow row in tb_Banh.Rows)
                 {
                     if (row[1].ToString() == (tenBanh))
                     {
@@ -47,7 +47,7 @@ namespace BUS
             finally
             {
                 dp.DisConnecTion();
-                
+
             }
 
         }
@@ -72,7 +72,7 @@ namespace BUS
         /// <param name="tb"></param>
         /// <param name="tenHang"></param>
         public void RemoveGetDataRowHang(DataTable tb, string tenHang, int maBanh)
-        {   
+        {
             foreach (DataRow ros in tb.Rows)
             {
                 if (ros["TenHang"].ToString() == tenHang && ros["MaBanh"].ToString() == maBanh.ToString())
@@ -125,7 +125,7 @@ namespace BUS
                     listView1.Items[i].Remove();
                 }
             }
-            for(int i = 0; i < tb.Rows.Count; i++)
+            for (int i = 0; i < tb.Rows.Count; i++)
             {
                 string s = tb.Rows[i]["MaBanh"].ToString();
                 if (s == maBanh.ToString())
@@ -165,7 +165,7 @@ namespace BUS
         {
             int max = 0;
             DataTable tb_HoaDon = new DataProvider().GetDataTableDonHang();
-            if(tb_HoaDon.Rows[0][0].ToString() !=  null)
+            if (tb_HoaDon.Rows[0][0].ToString() != null)
             {
                 max = int.Parse(tb_HoaDon.Rows[0][0].ToString());
                 foreach (DataRow row in tb_HoaDon.Rows)
@@ -178,6 +178,9 @@ namespace BUS
             return ++max;
         }
 
+        /// <summary>
+        /// Update du lieu tu ListView len dataBase_TableBanh
+        /// </summary>
         public void updateDuLieu_Banh()
         {
             DataTable tbBanh = new DataProvider().GetDataTableBanh();
@@ -186,62 +189,82 @@ namespace BUS
             tbBanh.Rows.Add(rowBanh);
             new DataProvider().updateTableBanh(tbBanh);
         }
-        public void updateDuLieuDonHang_Banh()
+        /// <summary>
+        /// Update du lieu tu ListView len dataBase_TableHoaDon_Banh
+        /// </summary>
+        /// <param name="maHoaDon"></param>
+        /// <param name="maBanh"></param>
+        public void updateDuLieuDonHang_Banh(int maHoaDon, int maBanh)
         {
-
+            DataTable tbHoaDon_Banh = new DataProvider().GetDataTableDonHang_Banh();
+            DataRow rowHoaDon_Banh = tbHoaDon_Banh.NewRow();
+            rowHoaDon_Banh[0] = maHoaDon;
+            rowHoaDon_Banh[1] = maBanh;
+            tbHoaDon_Banh.Rows.Add(rowHoaDon_Banh);
+            new DataProvider().updateTableDonHang_Banh(tbHoaDon_Banh);
         }
+        /// <summary>
+        /// Update du lieu tu ListView len dataBase_TableHoaDon
+        /// </summary>
+        /// <param name="MaKhach"></param>
+        /// <param name="MaNV"></param>
+        /// <param name="maHoaDon"></param>
+        public void updateDuLieuHoaDon(string MaKhach, string MaNV, int maHoaDon)
+        {
+            DataTable tbDonHang = new DataProvider().GetDataTableDonHang();
+            DataRow rowDonHang = tbDonHang.NewRow();
+            rowDonHang[0] = maHoaDon;
+            rowDonHang[1] = MaKhach;
+            rowDonHang[2] = MaNV;
+            tbDonHang.Rows.Add(rowDonHang);
+            new DataProvider().updateTableDonHang(tbDonHang);
+        }
+        /// <summary>
+        /// Update du lieu tu ListView len dataBase_TableChiTietDon
+        /// </summary>
+        /// <param name="row"></param>
+        public void updateDuLieuChiTietDon(DataRow row)
+        {
+            DataTable tbChiTiet = new DataProvider().GetDataTableChiTietBanh();
+            DataRow rowChiTietBanh = tbChiTiet.NewRow();
+            rowChiTietBanh[0] = row[0];
+            rowChiTietBanh[1] = row[1];
+             rowChiTietBanh[2] = row[2];
+            rowChiTietBanh[3] = row[3];
+            rowChiTietBanh[4] = row[4];
+            rowChiTietBanh[5] = row[5];
+            tbChiTiet.Rows.Add(rowChiTietBanh);
+            new DataProvider().updateTableChiTietBanh(tbChiTiet);
+        }
+
+        /// <summary>
+        /// Update thong tin len cac Table Banh, HoaDon, ChiTietBanh, HoaDon_Banh
+        /// </summary>
+        /// <param name="MaNV"></param>
+        /// <param name="MaKhach"></param>
+        /// <param name="tb"></param>
+        /// <param name="list"></param>
         public void ThemHoaDon(string MaNV, string MaKhach, DataTable tb, ListView list)
         {            
             if (tb.Rows.Count != 0)
-            {
+            { 
                 // update ddu lieu len tb HOADON
-                DataTable tbDonHang = new DataProvider().GetDataTableDonHang();
-                DataRow rowDonHang = tbDonHang.NewRow();
                 int maHoaDon = getMaHoaDon();
-                rowDonHang[0] = maHoaDon;
-                rowDonHang[1] = MaKhach;
-                rowDonHang[2] = MaNV;
-                tbDonHang.Rows.Add(rowDonHang);
-                new DataProvider().updateTableDonHang(tbDonHang);
+                updateDuLieuHoaDon(MaKhach, MaNV, maHoaDon);
                 int maBanh = GetMaBanh() - 1;
                 foreach (DataRow row in tb.Rows)
                 {
                     if (int.Parse(row[0].ToString()) != maBanh)
                     {
                         maBanh = int.Parse(row[0].ToString());
-                        //update du lieu len tb Banh
-                        DataTable tbBanh = new DataProvider().GetDataTableBanh();
-                        DataRow rowBanh = tbBanh.NewRow();
-                        rowBanh[0] = GetMaBanh();
-                        tbBanh.Rows.Add(rowBanh);
-                        new DataProvider().updateTableBanh(tbBanh);
-                        //updateDuLieu_Banh();
-
-                        //updata du lieu len tb HoaDOn_Banh
-                        DataTable tbHoaDon_Banh = new DataProvider().GetDataTableDonHang_Banh();
-                        DataRow rowHoaDon_Banh = tbHoaDon_Banh.NewRow();
-                        rowHoaDon_Banh[0] = maHoaDon;
-                        rowHoaDon_Banh[1] = maBanh;
-                        tbHoaDon_Banh.Rows.Add(rowHoaDon_Banh);
-                        new DataProvider().updateTableDonHang_Banh(tbHoaDon_Banh);
+                        updateDuLieu_Banh();
+                        updateDuLieuDonHang_Banh(maHoaDon, maBanh);
                     }
-                    DataTable tbChiTiet = new DataProvider().GetDataTableChiTietBanh();
-                    DataRow rowChiTietBanh = tbChiTiet.NewRow();
-                    rowChiTietBanh[0] = row[0];
-                    rowChiTietBanh[1] = row[1];
-                    rowChiTietBanh[2] = row[2];
-                    rowChiTietBanh[3] = row[3];
-                    rowChiTietBanh[4] = row[4];
-                    rowChiTietBanh[5] = row[5];
-                    tbChiTiet.Rows.Add(rowChiTietBanh);
-                    new DataProvider().updateTableChiTietBanh(tbChiTiet);
+                    updateDuLieuChiTietDon(row);
                 }
                 tb.Clear();
                 list.Clear();
             }
-            
         }
-        
-
     }
 }
