@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ColumnHeader clmMaBanh;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChinh));
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.tab = new System.Windows.Forms.TabControl();
             this.tPgTen = new System.Windows.Forms.TabPage();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
@@ -115,7 +115,7 @@
             this.txtSoLuongCoCa = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLuu = new System.Windows.Forms.Button();
-            this.btnHuy = new System.Windows.Forms.Button();
+            this.btnTKiem = new System.Windows.Forms.Button();
             this.btnXoaBill = new System.Windows.Forms.Button();
             this.btnNhapTTNhanVien = new System.Windows.Forms.Button();
             this.btnNhapTTKhach = new System.Windows.Forms.Button();
@@ -1229,17 +1229,18 @@
             this.btnLuu.UseVisualStyleBackColor = false;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // btnHuy
+            // btnTKiem
             // 
-            this.btnHuy.BackColor = System.Drawing.Color.Aqua;
-            this.btnHuy.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuy.Location = new System.Drawing.Point(1148, 324);
-            this.btnHuy.Margin = new System.Windows.Forms.Padding(4);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(139, 72);
-            this.btnHuy.TabIndex = 5;
-            this.btnHuy.Text = "Hủy đơn hàng";
-            this.btnHuy.UseVisualStyleBackColor = false;
+            this.btnTKiem.BackColor = System.Drawing.Color.Aqua;
+            this.btnTKiem.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTKiem.Location = new System.Drawing.Point(1148, 324);
+            this.btnTKiem.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTKiem.Name = "btnTKiem";
+            this.btnTKiem.Size = new System.Drawing.Size(139, 72);
+            this.btnTKiem.TabIndex = 5;
+            this.btnTKiem.Text = "Tìm kiếm đơn hàng";
+            this.btnTKiem.UseVisualStyleBackColor = false;
+            this.btnTKiem.Click += new System.EventHandler(this.btnTKiem_Click);
             // 
             // btnXoaBill
             // 
@@ -1294,16 +1295,16 @@
             this.clmThuocUong,
             this.clmTien});
             this.listView1.FullRowSelect = true;
-            listViewGroup4.Header = "ListViewGroup";
-            listViewGroup4.Name = "listViewGroup1";
-            listViewGroup5.Header = "ListViewGroup";
-            listViewGroup5.Name = "listViewGroup2";
-            listViewGroup6.Header = "ListViewGroup";
-            listViewGroup6.Name = "listViewGroup3";
+            listViewGroup7.Header = "ListViewGroup";
+            listViewGroup7.Name = "listViewGroup1";
+            listViewGroup8.Header = "ListViewGroup";
+            listViewGroup8.Name = "listViewGroup2";
+            listViewGroup9.Header = "ListViewGroup";
+            listViewGroup9.Name = "listViewGroup3";
             this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup4,
-            listViewGroup5,
-            listViewGroup6});
+            listViewGroup7,
+            listViewGroup8,
+            listViewGroup9});
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(336, 36);
             this.listView1.Margin = new System.Windows.Forms.Padding(4);
@@ -1655,7 +1656,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1625, 1012);
+            this.ClientSize = new System.Drawing.Size(1604, 875);
             this.Controls.Add(this.txtNhanVien);
             this.Controls.Add(this.txtKhach);
             this.Controls.Add(this.label12);
@@ -1685,7 +1686,7 @@
             this.Controls.Add(this.btnNhapTTKhach);
             this.Controls.Add(this.btnNhapTTNhanVien);
             this.Controls.Add(this.btnXoaBill);
-            this.Controls.Add(this.btnHuy);
+            this.Controls.Add(this.btnTKiem);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.tab);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1758,7 +1759,7 @@
         private System.Windows.Forms.TabPage tPgThanhPhan;
         private System.Windows.Forms.TabPage tPgSize;
         private System.Windows.Forms.Button btnLuu;
-        private System.Windows.Forms.Button btnHuy;
+        private System.Windows.Forms.Button btnTKiem;
         private System.Windows.Forms.Button btnXoaBill;
         private System.Windows.Forms.Button btnNhapTTNhanVien;
         private System.Windows.Forms.Button btnNhapTTKhach;

@@ -325,6 +325,10 @@ namespace BaiTapLon_KiemThuPhanMem
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e) { }
         private void listView1_SelectedIndexChanged(object sender, EventArgs e) { }
 
-        
+        private void btnTKiem_Click(object sender, EventArgs e)
+        {
+            frmFind frm = new frmFind();
+            frm.ShowDialog();
+        }
     }
 }
