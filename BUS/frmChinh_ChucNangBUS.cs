@@ -13,7 +13,7 @@ namespace BUS
 {
     public class BUS_ChucNang
     {
-
+        frmChinh_ChucNangDAo chucNang = new frmChinh_ChucNangDAo();
 
         /// <summary>
         /// lay gia tien cua ten banh
@@ -22,34 +22,7 @@ namespace BUS
         /// <returns></returns>
         public double getTienHang(string tenBanh)
         {
-            double kq = 0;
-            DataProvider dp = new DataProvider();
-            dp.ConnecTion();
-            DataTable tb_Banh = dp.GetDataTableHang();
-            try
-            {
-                foreach (DataRow row in tb_Banh.Rows)
-                {
-                    if (row[1].ToString() == (tenBanh))
-                    {
-                        kq = double.Parse(row[5].ToString());
-                        return kq;
-                    }
-                }
-                dp.DisConnecTion();
-                return kq;
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Tên Bánh Sai...", "error getTienBanh");
-                throw ex;
-            }
-            finally
-            {
-                dp.DisConnecTion();
-
-            }
-
+            return chucNang.getTienHang(tenBanh);
         }
 
         /// <summary>
@@ -57,30 +30,18 @@ namespace BUS
         /// </summary>
         /// <param name="tb"></param>
         /// <param name="tenHang"></param>
-        public void GetDataRowHang(DataTable tb, string tenHang, int MaBanh)
+        public void GetDataRowChiTietBanh(DataTable tb, string tenHang, int MaBanh)
         {
-            DataRow row = tb.NewRow();
-            DataProvider dp = new DataProvider();
-            SqlDataAdapter adapter = new SqlDataAdapter("Select MaBanh = '" + MaBanh + "', MaHang, TenHang, MaLoai, SoLuong = 1, GiaHang from Hang Where TenHang = N'" + tenHang.ToString() + "'", dp.cnn);
-
-            adapter.Fill(tb);
-
+            chucNang.GetDataRowChiTietBanh(tb, tenHang, MaBanh);
         }
         /// <summary>
         /// Xoa thong tin cua hang khoi table
         /// </summary>
         /// <param name="tb"></param>
         /// <param name="tenHang"></param>
-        public void RemoveGetDataRowHang(DataTable tb, string tenHang, int maBanh)
+        public void RemoveDataRowHang(DataTable tb, string tenHang, int maBanh)
         {
-            foreach (DataRow ros in tb.Rows)
-            {
-                if (ros["TenHang"].ToString() == tenHang && ros["MaBanh"].ToString() == maBanh.ToString())
-                {
-                    tb.Rows.Remove(ros);
-                    return;
-                }
-            }
+            chucNang.RemoveDataRowHang(tb, tenHang, maBanh);
         }
         /// <summary>
         /// Lay thong tin nuoc uong cua khach vao table, Co lay so luong
@@ -90,10 +51,7 @@ namespace BUS
         /// <param name="SoLuong"></param>
         public void GetDataRowNuoc(DataTable tb, string tenHang, int SoLuong, int MaBanh)
         {
-            DataRow row = tb.NewRow();
-            DataProvider dp = new DataProvider();
-            SqlDataAdapter adapter = new SqlDataAdapter("Select MaBanh = '" + MaBanh + "', MaHang, TenHang, MaLoai, SoLuong = '" + SoLuong.ToString() + "' , GiaHang from Hang Where TenHang = N'" + tenHang.ToString() + "'", dp.cnn);
-            adapter.Fill(tb);
+            chucNang.GetDataRowNuoc(tb, tenHang, SoLuong, MaBanh);
         }
         /// <summary>
         /// Them bill vao listView
@@ -117,14 +75,27 @@ namespace BUS
         public void XoaItemListView(DataTable tb, ListView listView1)
         {
             string maBanh = "";
+            
+            // Xoa trong listView
             for (int i = 0; i < listView1.Items.Count; i++)
             {
+                
                 if (listView1.Items[i].Selected)
-                {
+                {   
                     maBanh = listView1.Items[i].Text;
                     listView1.Items[i].Remove();
                 }
             }
+            //for (int i = 0; i < listView1.Items.Count; i++)
+            //{
+            //    int sMa = int.Parse(listView1.Items[i].SubItems[0].Text);
+            //    int sMaBanhBo = int.Parse(maBanh);
+            //    if (sMa > sMaBanhBo)
+            //    {
+            //        listView1.Items[i].SubItems[0].Text = (int.Parse(listView1.Items[i].SubItems[0].Text) - 1).ToString();                    
+            //    }
+            //}
+            // Xoa trong dataTable
             for (int i = 0; i < tb.Rows.Count; i++)
             {
                 string s = tb.Rows[i]["MaBanh"].ToString();
@@ -134,6 +105,15 @@ namespace BUS
                     i--;
                 }
             }
+            //for (int i = 0; i < tb.Rows.Count; i++)
+            //{
+            //    int sMa = int.Parse(tb.Rows[i]["MaBanh"].ToString());
+            //    int sMaBanhBo = int.Parse(maBanh);
+            //    if(sMa > sMaBanhBo)
+            //    {
+            //        tb.Rows[i]["MaBanh"] = (int.Parse(tb.Rows[i]["MaBanh"].ToString()) - 1); 
+            //    }
+            //}
         }
 
         /// <summary>
@@ -142,19 +122,8 @@ namespace BUS
         /// <returns></returns>
         public int GetMaBanh()
         {
-            int max = 0;
-            DataTable tb_Banh = new DataProvider().GetDataTableBanh();
-            if (tb_Banh.Rows[0][0].ToString() != null)
-            {
-                max = int.Parse(tb_Banh.Rows[0][0].ToString());
-                foreach (DataRow row in tb_Banh.Rows)
-                {
-                    int value = int.Parse(row[0].ToString());
-                    if (max < value)
-                        max = value;
-                }
-            }
-            return ++max;
+            int kq = chucNang.GetMaBanh();
+            return kq;
         }
 
         /// <summary>
@@ -163,19 +132,8 @@ namespace BUS
         /// <returns></returns>
         public int getMaHoaDon()
         {
-            int max = 0;
-            DataTable tb_HoaDon = new DataProvider().GetDataTableDonHang();
-            if (tb_HoaDon.Rows[0][0].ToString() != null)
-            {
-                max = int.Parse(tb_HoaDon.Rows[0][0].ToString());
-                foreach (DataRow row in tb_HoaDon.Rows)
-                {
-                    int value = int.Parse(row[0].ToString());
-                    if (max < value)
-                        max = value;
-                }
-            }
-            return ++max;
+            int kq = chucNang.getMaHoaDon();
+            return kq;
         }
 
         /// <summary>
@@ -183,11 +141,7 @@ namespace BUS
         /// </summary>
         public void updateDuLieu_Banh()
         {
-            DataTable tbBanh = new DataProvider().GetDataTableBanh();
-            DataRow rowBanh = tbBanh.NewRow();
-            rowBanh[0] = GetMaBanh();
-            tbBanh.Rows.Add(rowBanh);
-            new DataProvider().updateTableBanh(tbBanh);
+            chucNang.updateDuLieu_Banh();
         }
         /// <summary>
         /// Update du lieu tu ListView len dataBase_TableHoaDon_Banh
@@ -196,12 +150,7 @@ namespace BUS
         /// <param name="maBanh"></param>
         public void updateDuLieuDonHang_Banh(int maHoaDon, int maBanh)
         {
-            DataTable tbHoaDon_Banh = new DataProvider().GetDataTableDonHang_Banh();
-            DataRow rowHoaDon_Banh = tbHoaDon_Banh.NewRow();
-            rowHoaDon_Banh[0] = maHoaDon;
-            rowHoaDon_Banh[1] = maBanh;
-            tbHoaDon_Banh.Rows.Add(rowHoaDon_Banh);
-            new DataProvider().updateTableDonHang_Banh(tbHoaDon_Banh);
+            chucNang.updateDuLieuDonHang_Banh(maHoaDon, maBanh);
         }
         /// <summary>
         /// Update du lieu tu ListView len dataBase_TableHoaDon
@@ -211,13 +160,7 @@ namespace BUS
         /// <param name="maHoaDon"></param>
         public void updateDuLieuHoaDon(string MaKhach, string MaNV, int maHoaDon)
         {
-            DataTable tbDonHang = new DataProvider().GetDataTableDonHang();
-            DataRow rowDonHang = tbDonHang.NewRow();
-            rowDonHang[0] = maHoaDon;
-            rowDonHang[1] = MaKhach;
-            rowDonHang[2] = MaNV;
-            tbDonHang.Rows.Add(rowDonHang);
-            new DataProvider().updateTableDonHang(tbDonHang);
+            chucNang.updateDuLieuHoaDon(MaKhach, MaNV, maHoaDon);
         }
         /// <summary>
         /// Update du lieu tu ListView len dataBase_TableChiTietDon
@@ -225,16 +168,7 @@ namespace BUS
         /// <param name="row"></param>
         public void updateDuLieuChiTietDon(DataRow row)
         {
-            DataTable tbChiTiet = new DataProvider().GetDataTableChiTietBanh();
-            DataRow rowChiTietBanh = tbChiTiet.NewRow();
-            rowChiTietBanh[0] = row[0];
-            rowChiTietBanh[1] = row[1];
-             rowChiTietBanh[2] = row[2];
-            rowChiTietBanh[3] = row[3];
-            rowChiTietBanh[4] = row[4];
-            rowChiTietBanh[5] = row[5];
-            tbChiTiet.Rows.Add(rowChiTietBanh);
-            new DataProvider().updateTableChiTietBanh(tbChiTiet);
+            chucNang.updateDuLieuChiTietDon(row);
         }
 
         /// <summary>
@@ -263,7 +197,7 @@ namespace BUS
                     updateDuLieuChiTietDon(row);
                 }
                 tb.Clear();
-                list.Clear();
+                list.Items.Clear() ;
             }
         }
     }
