@@ -20,30 +20,14 @@ namespace BUS
         {
             string user = CreateMD5(userName);
             string pass = CreateMD5(passWord);
-            DataProvider dp = new DataProvider();
-            string sqlStr = "SELECT Type FROM Users WHERE Username = N'" + user + "' AND Password = N'" + pass + "'";
-            dp.ConnecTion();
-            SqlCommand cmd = new SqlCommand(sqlStr);
-            cmd.Connection = dp.cnn;
-            cmd.CommandText = sqlStr;
-            cmd.CommandType = CommandType.Text;
-            chucVu = (string)cmd.ExecuteScalar();
-            dp.DisConnecTion();
-            try
+            LoginDao lg = new LoginDao();
+            if(lg.Login(user, pass))
             {
-                if (chucVu == "1" || chucVu == "2")
-                    return true;
-                return false;
+                chucVu = lg.chucVu;
+                return true;
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Ko lay duoc du lieu", " error ");
-                throw ex;
-            }
-            finally
-            {
-                dp.DisConnecTion();
-            }
+            return false;
+            
         }
 
         public static string CreateMD5(string input)

@@ -31,6 +31,7 @@ namespace BaiTapLon_KiemThuPhanMem
         double tienTpPhu = 0;
         double tongTien = 0;
         int MaBanh_ = 0;
+        int i = 0;
 
 
         private void FrmChinh_Load(object sender, EventArgs e)
@@ -47,7 +48,7 @@ namespace BaiTapLon_KiemThuPhanMem
                 string loai = frm.chucVu;
                 if (loai == "1")
                 {
-                    btnNhapTTKhach.Enabled = true;
+                    btnNhapTTKhach.Enabled = true;  
                     btnNhapTTNhanVien.Enabled = true;
                 }
             }
@@ -64,10 +65,10 @@ namespace BaiTapLon_KiemThuPhanMem
             lblTienTenBanh.Text = tienLoaiPizza.ToString();
 
             if (rad.Checked == true)
-                bus.GetDataRowHang(tbDonHang, tenBanh, MaBanh_);
+                bus.GetDataRowChiTietBanh(tbDonHang, tenBanh, MaBanh_);
             else
                 if (!rad.Checked && flag != false)
-                    bus.RemoveGetDataRowHang(tbDonHang, tenBanh,MaBanh_);
+                    bus.RemoveDataRowHang(tbDonHang, tenBanh,MaBanh_);
         }
 //--------------------------------------------------------------------------------------------------------------------------------------
         ////Chon Size
@@ -79,10 +80,10 @@ namespace BaiTapLon_KiemThuPhanMem
             lblTienSize.Text = "x" + tienSize.ToString();
 
             if (rad.Checked)
-                bus.GetDataRowHang(tbDonHang, rad.Text, MaBanh_);
+                bus.GetDataRowChiTietBanh(tbDonHang, rad.Text, MaBanh_);
             else
                 if(!rad.Checked && flag != false)
-                    bus.RemoveGetDataRowHang(tbDonHang, rad.Text, MaBanh_);
+                    bus.RemoveDataRowHang(tbDonHang, rad.Text, MaBanh_);
         }
 //--------------------------------------------------------------------------------------------------------------------------------------
         //Chon nước uống
@@ -182,7 +183,7 @@ namespace BaiTapLon_KiemThuPhanMem
             if (check.Checked)
             {
                 flag = true;
-                bus.GetDataRowHang(tbDonHang, check.Text, MaBanh_);
+                bus.GetDataRowChiTietBanh(tbDonHang, check.Text, MaBanh_);
                 lblTpPhu.Text += check.Text + ", ";
                 tienTpPhu += bus.getTienHang(check.Text);
             }
@@ -190,7 +191,7 @@ namespace BaiTapLon_KiemThuPhanMem
             {
                 if (!check.Checked && flag != false)
                 {
-                    bus.RemoveGetDataRowHang(tbDonHang, check.Text, MaBanh_);
+                    bus.RemoveDataRowHang(tbDonHang, check.Text, MaBanh_);
                     lblTpPhu.Text = lblTpPhu.Text.Replace(check.Text + ", ", "");
                     tienTpPhu -= bus.getTienHang(check.Text);
                 }
@@ -204,10 +205,10 @@ namespace BaiTapLon_KiemThuPhanMem
             RadioButton rad = sender as RadioButton;
             lblDeBanh.Text = "Đế Bánh " + rad.Text;
             if (rad.Checked)
-                bus.GetDataRowHang(tbDonHang, rad.Text, MaBanh_);
+                bus.GetDataRowChiTietBanh(tbDonHang, rad.Text, MaBanh_);
             else
                 if (!rad.Checked && flag)
-                    bus.RemoveGetDataRowHang(tbDonHang, rad.Text, MaBanh_);
+                    bus.RemoveDataRowHang(tbDonHang, rad.Text, MaBanh_);
         }
         //--------------------------------------------------------------------------------------------------------------------------------------
         // Chon Vien Banh
@@ -218,14 +219,14 @@ namespace BaiTapLon_KiemThuPhanMem
             if (rad.Checked)
             {   
                 tienVoBanh = bus.getTienHang(rad.Text);
-                bus.GetDataRowHang(tbDonHang, rad.Text, MaBanh_);
+                bus.GetDataRowChiTietBanh(tbDonHang, rad.Text, MaBanh_);
             }
             else
             {
                 if(!rad.Checked && flag)
                 {
                     tienVoBanh -= bus.getTienHang(rad.Text);
-                    bus.RemoveGetDataRowHang(tbDonHang, rad.Text, MaBanh_);
+                    bus.RemoveDataRowHang(tbDonHang, rad.Text, MaBanh_);
                 }
             }
             lblTienVoBanh.Text = tienVoBanh.ToString();
@@ -268,10 +269,10 @@ namespace BaiTapLon_KiemThuPhanMem
                 //----------------------------------------------------------------------------------------------------------
                 dataGridView1.DataSource = tbDonHang;
                 tbtmp = tbDonHang;
-                
-                //----------------------------------------------------------------------------------------------------------
 
-                MaBanh_++;
+                //----------------------------------------------------------------------------------------------------------
+                //i++;
+                MaBanh_ ++;
                 //----------------------------------------------------------------------------------------------------------
                 // Thanh phan phu
                 flag = false;

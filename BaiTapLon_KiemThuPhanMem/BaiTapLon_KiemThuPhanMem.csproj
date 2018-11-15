@@ -52,11 +52,13 @@
     <Compile Include="FrmChinh.Designer.cs">
       <DependentUpon>FrmChinh.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmFind.cs">
+
+    <Compile Include="FrmKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFind.Designer.cs">
-      <DependentUpon>frmFind.cs</DependentUpon>
+    <Compile Include="FrmKhachHang.Designer.cs">
+      <DependentUpon>FrmKhachHang.cs</DependentUpon>
+
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -75,8 +77,10 @@
     <EmbeddedResource Include="FrmChinh.resx">
       <DependentUpon>FrmChinh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFind.resx">
-      <DependentUpon>frmFind.cs</DependentUpon>
+
+    <EmbeddedResource Include="FrmKhachHang.resx">
+      <DependentUpon>FrmKhachHang.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
