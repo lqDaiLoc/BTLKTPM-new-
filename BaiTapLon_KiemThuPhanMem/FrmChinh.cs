@@ -328,8 +328,8 @@ namespace BaiTapLon_KiemThuPhanMem
 
         private void btnTKiem_Click(object sender, EventArgs e)
         {
-            frmFind frm = new frmFind();
-            frm.ShowDialog();
+            //frmFind frm = new frmFind();
+            //frm.ShowDialog();
         }
     }
 }

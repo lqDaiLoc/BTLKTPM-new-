@@ -75,27 +75,27 @@ namespace BUS
         public void XoaItemListView(DataTable tb, ListView listView1)
         {
             string maBanh = "";
-            
+
             // Xoa trong listView
             for (int i = 0; i < listView1.Items.Count; i++)
             {
-                
+
                 if (listView1.Items[i].Selected)
-                {   
+                {
                     maBanh = listView1.Items[i].Text;
                     listView1.Items[i].Remove();
                 }
             }
-            //for (int i = 0; i < listView1.Items.Count; i++)
-            //{
-            //    int sMa = int.Parse(listView1.Items[i].SubItems[0].Text);
-            //    int sMaBanhBo = int.Parse(maBanh);
-            //    if (sMa > sMaBanhBo)
-            //    {
-            //        listView1.Items[i].SubItems[0].Text = (int.Parse(listView1.Items[i].SubItems[0].Text) - 1).ToString();                    
-            //    }
-            //}
-            // Xoa trong dataTable
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                int sMa = int.Parse(listView1.Items[i].SubItems[0].Text);
+                int sMaBanhBo = int.Parse(maBanh);
+                if (sMa > sMaBanhBo)
+                {
+                    listView1.Items[i].SubItems[0].Text = (int.Parse(listView1.Items[i].SubItems[0].Text) - 1).ToString();
+                }
+            }
+            //Xoa trong dataTable
             for (int i = 0; i < tb.Rows.Count; i++)
             {
                 string s = tb.Rows[i]["MaBanh"].ToString();
@@ -105,15 +105,15 @@ namespace BUS
                     i--;
                 }
             }
-            //for (int i = 0; i < tb.Rows.Count; i++)
-            //{
-            //    int sMa = int.Parse(tb.Rows[i]["MaBanh"].ToString());
-            //    int sMaBanhBo = int.Parse(maBanh);
-            //    if(sMa > sMaBanhBo)
-            //    {
-            //        tb.Rows[i]["MaBanh"] = (int.Parse(tb.Rows[i]["MaBanh"].ToString()) - 1); 
-            //    }
-            //}
+            for (int i = 0; i < tb.Rows.Count; i++)
+            {
+                int sMa = int.Parse(tb.Rows[i]["MaBanh"].ToString());
+                int sMaBanhBo = int.Parse(maBanh);
+                if (sMa > sMaBanhBo)
+                {
+                    tb.Rows[i]["MaBanh"] = (int.Parse(tb.Rows[i]["MaBanh"].ToString()) - 1);
+                }
+            }
         }
 
         /// <summary>
