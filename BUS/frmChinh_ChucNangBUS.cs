@@ -139,9 +139,9 @@ namespace BUS
         /// <summary>
         /// Update du lieu tu ListView len dataBase_TableBanh
         /// </summary>
-        public void updateDuLieu_Banh()
+        public void updateDuLieu_Banh(int maBanh)
         {
-            chucNang.updateDuLieu_Banh();
+            chucNang.updateDuLieu_Banh(maBanh);
         }
         /// <summary>
         /// Update du lieu tu ListView len dataBase_TableHoaDon_Banh
@@ -191,7 +191,7 @@ namespace BUS
                     if (int.Parse(row[0].ToString()) != maBanh)
                     {
                         maBanh = int.Parse(row[0].ToString());
-                        updateDuLieu_Banh();
+                        updateDuLieu_Banh(maBanh);
                         updateDuLieuDonHang_Banh(maHoaDon, maBanh);
                     }
                     updateDuLieuChiTietDon(row);

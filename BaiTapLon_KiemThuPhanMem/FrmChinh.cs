@@ -31,6 +31,7 @@ namespace BaiTapLon_KiemThuPhanMem
         double tienTpPhu = 0;
         double tongTien = 0;
         int MaBanh_ = 0;
+        int i = 0;
 
 
         private void FrmChinh_Load(object sender, EventArgs e)
@@ -268,10 +269,10 @@ namespace BaiTapLon_KiemThuPhanMem
                 //----------------------------------------------------------------------------------------------------------
                 dataGridView1.DataSource = tbDonHang;
                 tbtmp = tbDonHang;
-                
-                //----------------------------------------------------------------------------------------------------------
 
-                MaBanh_++;
+                //----------------------------------------------------------------------------------------------------------
+                //i++;
+                MaBanh_ ++;
                 //----------------------------------------------------------------------------------------------------------
                 // Thanh phan phu
                 flag = false;

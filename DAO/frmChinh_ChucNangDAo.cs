@@ -126,11 +126,11 @@ namespace DAO
         /// <summary>
         /// Update du lieu tu ListView len dataBase_TableBanh
         /// </summary>
-        public void updateDuLieu_Banh()
+        public void updateDuLieu_Banh(int maBanh)
         {
             DataTable tbBanh = GetDataTableBanh();
             DataRow rowBanh = tbBanh.NewRow();
-            rowBanh[0] = GetMaBanh();
+            rowBanh[0] = maBanh;
             tbBanh.Rows.Add(rowBanh);
             updateTableBanh(tbBanh);
         }
