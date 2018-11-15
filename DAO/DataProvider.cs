@@ -155,6 +155,13 @@ namespace DAO
             SqlCommandBuilder scb = new SqlCommandBuilder(da);
             da.Update(tb);
         }
+        // update Table Khach
+        public void updateTableKhach(DataTable tb)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM KhachHang", cnn);
+            SqlCommandBuilder scb = new SqlCommandBuilder(da);
+            da.Update(tb);
+        }
 
         //---------------------------------------------------------------------------------------------------------------
         // ConnecTion

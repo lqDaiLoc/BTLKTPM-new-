@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ColumnHeader clmMaBanh;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChinh));
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.tab = new System.Windows.Forms.TabControl();
             this.tPgTen = new System.Windows.Forms.TabPage();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
@@ -1282,6 +1282,7 @@
             this.btnNhapTTKhach.TabIndex = 9;
             this.btnNhapTTKhach.Text = "Nhập Thông Tin Khách ";
             this.btnNhapTTKhach.UseVisualStyleBackColor = false;
+            this.btnNhapTTKhach.Click += new System.EventHandler(this.btnNhapTTKhach_Click);
             // 
             // listView1
             // 
@@ -1295,16 +1296,16 @@
             this.clmThuocUong,
             this.clmTien});
             this.listView1.FullRowSelect = true;
-            listViewGroup7.Header = "ListViewGroup";
-            listViewGroup7.Name = "listViewGroup1";
-            listViewGroup8.Header = "ListViewGroup";
-            listViewGroup8.Name = "listViewGroup2";
-            listViewGroup9.Header = "ListViewGroup";
-            listViewGroup9.Name = "listViewGroup3";
+            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup2.Header = "ListViewGroup";
+            listViewGroup2.Name = "listViewGroup2";
+            listViewGroup3.Header = "ListViewGroup";
+            listViewGroup3.Name = "listViewGroup3";
             this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup7,
-            listViewGroup8,
-            listViewGroup9});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3});
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(336, 36);
             this.listView1.Margin = new System.Windows.Forms.Padding(4);

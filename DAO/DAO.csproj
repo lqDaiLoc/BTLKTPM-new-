@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomersDAO.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="frmChinh_ChucNangDAo.cs" />
     <Compile Include="LoginDao.cs" />

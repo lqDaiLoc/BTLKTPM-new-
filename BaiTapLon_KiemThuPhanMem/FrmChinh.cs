@@ -331,5 +331,11 @@ namespace BaiTapLon_KiemThuPhanMem
             //frmFind frm = new frmFind();
             //frm.ShowDialog();
         }
+
+        private void btnNhapTTKhach_Click(object sender, EventArgs e)
+        {
+            FrmCustomers frm = new FrmCustomers();
+            frm.Show();
+        }
     }
 }

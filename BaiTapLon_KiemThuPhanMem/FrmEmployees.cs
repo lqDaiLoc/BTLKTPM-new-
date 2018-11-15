@@ -12,9 +12,9 @@ using BUS;
 using TOD;
 namespace BaiTapLon_KiemThuPhanMem
 {
-    public partial class FrmNhanVien : Form
+    public partial class FrmEmployees : Form
     {
-        public FrmNhanVien()
+        public FrmEmployees()
         {
             InitializeComponent();
         }

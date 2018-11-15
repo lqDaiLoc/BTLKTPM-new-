@@ -52,13 +52,11 @@
     <Compile Include="FrmChinh.Designer.cs">
       <DependentUpon>FrmChinh.cs</DependentUpon>
     </Compile>
-
-    <Compile Include="FrmKhachHang.cs">
+    <Compile Include="FrmCustomers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmKhachHang.Designer.cs">
-      <DependentUpon>FrmKhachHang.cs</DependentUpon>
-
+    <Compile Include="FrmCustomers.Designer.cs">
+      <DependentUpon>FrmCustomers.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -66,27 +64,25 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmNhanVien.cs">
+    <Compile Include="FrmEmployees.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmNhanVien.Designer.cs">
-      <DependentUpon>FrmNhanVien.cs</DependentUpon>
+    <Compile Include="FrmEmployees.Designer.cs">
+      <DependentUpon>FrmEmployees.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmChinh.resx">
       <DependentUpon>FrmChinh.cs</DependentUpon>
     </EmbeddedResource>
-
-    <EmbeddedResource Include="FrmKhachHang.resx">
-      <DependentUpon>FrmKhachHang.cs</DependentUpon>
-
+    <EmbeddedResource Include="FrmCustomers.resx">
+      <DependentUpon>FrmCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmNhanVien.resx">
-      <DependentUpon>FrmNhanVien.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEmployees.resx">
+      <DependentUpon>FrmEmployees.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

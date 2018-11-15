@@ -1,6 +1,6 @@
 ﻿namespace BaiTapLon_KiemThuPhanMem
 {
-    partial class FrmNhanVien
+    partial class FrmEmployees
     {
         /// <summary>
         /// Required designer variable.
