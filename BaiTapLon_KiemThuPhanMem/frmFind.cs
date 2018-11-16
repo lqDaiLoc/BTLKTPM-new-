@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace BaiTapLon_KiemThuPhanMem
 {
-    public partial class frmFind : Form
+    public partial class frmFind: Form
     {
         SqlConnection cnn;
         SqlDataAdapter da;
@@ -23,8 +23,9 @@ namespace BaiTapLon_KiemThuPhanMem
 
         private void frmFind_Load(object sender, EventArgs e)
         {
-            string cnStr = "Server = .; Database = QLBanPizzaNew; Integrated security = true;";
-            cnn = new SqlConnection(cnStr);
+            string cnnStr = "Data Source=LAPTOP-RJRD8U96;Initial Catalog=QLBanPizzaNew;Integrated Security=True";
+            //string cnnStr = "Data Source=.;Initial Catalog=QLBanPizzaNew;Integrated Security=True";
+            cnn = new SqlConnection(cnnStr);
             //Gọi phương thức Load DL
             LoadDuLieu("SELECT * FROM DonHang");
         }
