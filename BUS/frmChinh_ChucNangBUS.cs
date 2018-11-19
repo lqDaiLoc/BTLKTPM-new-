@@ -182,6 +182,7 @@ namespace BUS
         {            
             if (tb.Rows.Count != 0)
             { 
+                
                 // update ddu lieu len tb HOADON
                 int maHoaDon = getMaHoaDon();
                 updateDuLieuHoaDon(MaKhach, MaNV, maHoaDon);

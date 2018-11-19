@@ -15,7 +15,10 @@ namespace BUS
     {
         CustomersDAO cusDAO = new CustomersDAO();
         public DataTable tb_Khach = new CustomersDAO().GetDataTableKhachHang();
-
+        public DataTable GetDataKhach()
+        {
+            return new CustomersDAO().GetDataTableKhachHang();
+        }
         public void Them(DataTable daT, Customers cus)
         {
             try
@@ -24,7 +27,6 @@ namespace BUS
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Loi them Customers", "error");
                 throw ex;
             }
         }
@@ -36,7 +38,6 @@ namespace BUS
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Loi Sua Customers", "error");
                 throw ex;
             }
         }
@@ -48,7 +49,7 @@ namespace BUS
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Loi Xoa Customers", "error");
+                
                 throw ex;
             }
         }

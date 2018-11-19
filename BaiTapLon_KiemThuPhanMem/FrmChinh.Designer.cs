@@ -157,6 +157,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtKhach = new System.Windows.Forms.TextBox();
             this.txtNhanVien = new System.Windows.Forms.TextBox();
+            this.txtMaDonHang = new System.Windows.Forms.TextBox();
             clmMaBanh = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tab.SuspendLayout();
             this.tPgTen.SuspendLayout();
@@ -1268,6 +1269,7 @@
             this.btnNhapTTNhanVien.TabIndex = 8;
             this.btnNhapTTNhanVien.Text = "Thông Tin Nhân Viên";
             this.btnNhapTTNhanVien.UseVisualStyleBackColor = false;
+            this.btnNhapTTNhanVien.Click += new System.EventHandler(this.btnNhapTTNhanVien_Click);
             // 
             // btnNhapTTKhach
             // 
@@ -1653,11 +1655,19 @@
             this.txtNhanVien.TabIndex = 32;
             this.txtNhanVien.Text = "102";
             // 
+            // txtMaDonHang
+            // 
+            this.txtMaDonHang.Location = new System.Drawing.Point(225, 6);
+            this.txtMaDonHang.Name = "txtMaDonHang";
+            this.txtMaDonHang.Size = new System.Drawing.Size(100, 27);
+            this.txtMaDonHang.TabIndex = 33;
+            // 
             // FrmChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1604, 875);
+            this.Controls.Add(this.txtMaDonHang);
             this.Controls.Add(this.txtNhanVien);
             this.Controls.Add(this.txtKhach);
             this.Controls.Add(this.label12);
@@ -1879,5 +1889,6 @@
         private System.Windows.Forms.TextBox txtKhach;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtMaDonHang;
     }
 }

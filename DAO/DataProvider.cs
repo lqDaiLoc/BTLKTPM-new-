@@ -162,6 +162,13 @@ namespace DAO
             SqlCommandBuilder scb = new SqlCommandBuilder(da);
             da.Update(tb);
         }
+        // update Table NhanVien
+        public void updateTableNhanVien(DataTable tb)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM NhanVien", cnn);
+            SqlCommandBuilder scb = new SqlCommandBuilder(da);
+            da.Update(tb);
+        }
 
         //---------------------------------------------------------------------------------------------------------------
         // ConnecTion

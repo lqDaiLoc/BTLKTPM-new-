@@ -13,7 +13,7 @@ namespace DAO
     {
         private void AddRow(DataRow row, Customers cus)
         {
-            row["MaKH"] = cus.MaNV;
+            row["MaKH"] = cus.MaKH;
             row["Ho"] = cus.Ho;
             row["Ten"] = cus.Ten;
             row["DiaChi"] = cus.DiaChi;
@@ -26,7 +26,7 @@ namespace DAO
         {
             foreach (DataRow r in daT.Rows)
             {
-                if (string.Compare(r["MaKH"].ToString(), cus.MaNV) == 0)
+                if (string.Compare(r["MaKH"].ToString(), cus.MaKH) == 0)
                 {
                     MessageBox.Show("Trùng Mã Nhân Viên", "Cảnh Báo");
                     return;

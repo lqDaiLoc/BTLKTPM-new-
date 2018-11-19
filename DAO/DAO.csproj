@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CustomersDAO.cs" />
     <Compile Include="DataProvider.cs" />
+    <Compile Include="EmployeesDAO.cs" />
     <Compile Include="frmChinh_ChucNangDAo.cs" />
     <Compile Include="LoginDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -31,7 +31,7 @@ namespace BaiTapLon_KiemThuPhanMem
         double tienTpPhu = 0;
         double tongTien = 0;
         int MaBanh_ = 0;
-        int i = 0;
+        string maKhach = "";
 
 
         private void FrmChinh_Load(object sender, EventArgs e)
@@ -57,6 +57,9 @@ namespace BaiTapLon_KiemThuPhanMem
         //Chon Ten Banh
         private void CheckedChange_radTenBanh(object sender, EventArgs e)
         {
+            FrmCustomers frmKhach = new FrmCustomers();
+            maKhach = frmKhach.getMaNV();
+            txtKhach.Text = maKhach;
             string tenBanh;
             RadioButton rad = sender as RadioButton;
             tenBanh = rad.Text;
@@ -260,7 +263,12 @@ namespace BaiTapLon_KiemThuPhanMem
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (lblTenBanh.Text != "")
-            {   
+            {
+
+                FrmCustomers frmKhach = new FrmCustomers();
+                maKhach = frmKhach.maKhach;
+                txtKhach.Text = maKhach;
+
                 tongTien = (tienVoBanh + tienTpPhu + tienNuoc + tienLoaiPizza) * tienSize;
                 Build bill = new Build(MaBanh_,lblTenBanh.Text, lblTpPhu.Text, lblSize.Text, lblDeBanh.Text, lblVienBanh.Text, lblThucUong.Text, tongTien);
                 bus.AddItemListView(bill, listView1);
@@ -269,9 +277,8 @@ namespace BaiTapLon_KiemThuPhanMem
                 //----------------------------------------------------------------------------------------------------------
                 dataGridView1.DataSource = tbDonHang;
                 tbtmp = tbDonHang;
-
+                txtMaDonHang.Text = bus.getMaHoaDon().ToString();
                 //----------------------------------------------------------------------------------------------------------
-                //i++;
                 MaBanh_ ++;
                 //----------------------------------------------------------------------------------------------------------
                 // Thanh phan phu
@@ -301,7 +308,8 @@ namespace BaiTapLon_KiemThuPhanMem
             }
             else
             {
-                MessageBox.Show("Bạn chưa nhập bánh!!!", "Cảnh báo", MessageBoxButtons.OK);
+                MessageBox.Show("Bạn chưa nhập bánh hoac maKhach!!!", "Cảnh báo", MessageBoxButtons.OK);
+                
             }
         }
 
@@ -336,6 +344,14 @@ namespace BaiTapLon_KiemThuPhanMem
         {
             FrmCustomers frm = new FrmCustomers();
             frm.Show();
+        }
+
+        private void btnNhapTTNhanVien_Click(object sender, EventArgs e)
+        {
+            
+            FrmEmployees frm = new FrmEmployees();
+            frm.Show();
+            
         }
     }
 }

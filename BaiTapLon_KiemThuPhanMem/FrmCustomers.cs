@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace BaiTapLon_KiemThuPhanMem
 {
     public partial class FrmCustomers : Form
     {
+        public string maKhach = "";
         public FrmCustomers()
         {
             InitializeComponent();
@@ -26,6 +28,10 @@ namespace BaiTapLon_KiemThuPhanMem
         {
             tb_Khach = BUS.tb_Khach;
             dgvKhachHang.DataSource = tb_Khach;
+
+            cbbID.DataSource = tb_Khach;
+            cbbID.DisplayMember = "Ten";
+            cbbID.ValueMember = "MaKH";            
         }
 
         private Customers GetCustomers()
@@ -51,14 +57,38 @@ namespace BaiTapLon_KiemThuPhanMem
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Customers cus = GetCustomers();
-            BUS.Them(tb_Khach, cus);
+            try
+            {
+                if (txtID.Text != null && txtTen.Text != "")
+                    BUS.Them(tb_Khach, cus);
+                else
+                    MessageBox.Show("Nhap ID va Ten", "error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Khong the them Customers", "error");
+                tb_Khach = BUS.GetDataKhach();
+                dgvKhachHang.DataSource = tb_Khach;
+            }
+            txtID.Enabled = true;
+            label1.Enabled = true;
             clearAllTextBox();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             Customers cus = GetCustomers();
-            BUS.Sua(tb_Khach.Rows[viTri], cus);
+            try
+            {
+                if (txtID.Text != "")
+                    BUS.Sua(tb_Khach.Rows[viTri], cus);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Loi Sua Customers", "error");
+                tb_Khach = BUS.GetDataKhach();
+                dgvKhachHang.DataSource = tb_Khach;
+            }
             txtID.Enabled = true;
             label1.Enabled = true;
             clearAllTextBox();
@@ -66,7 +96,16 @@ namespace BaiTapLon_KiemThuPhanMem
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            BUS.Update(tb_Khach);
+            try
+            {
+                BUS.Update(tb_Khach);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Khong the update customer nay duoc", "error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tb_Khach = BUS.GetDataKhach();
+                dgvKhachHang.DataSource = tb_Khach;
+            }
             clearAllTextBox();
         }
 
@@ -79,7 +118,19 @@ namespace BaiTapLon_KiemThuPhanMem
             {
                 if (row >= 0 && row < dgvKhachHang.Rows.Count)
                 {
-                    BUS.Del(row, tb_Khach);
+                    DialogResult result = MessageBox.Show("Xoa Du Lieu: ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (result == DialogResult.OK)
+                        try
+                        {
+                            BUS.Del(row, tb_Khach);
+                        }
+                        catch (SqlException)
+                        {
+                            MessageBox.Show("Khogng the xoa Customer nay vi xe anh huong den nhung csdl khac", "error");
+                            tb_Khach = BUS.GetDataKhach();
+                            dgvKhachHang.DataSource = tb_Khach;
+                        }
+
                 }
             }
             clearAllTextBox();
@@ -90,16 +141,33 @@ namespace BaiTapLon_KiemThuPhanMem
             viTri = e.RowIndex;
             int numrow;
             numrow = e.RowIndex;
-            txtID.Text = dgvKhachHang.Rows[numrow].Cells["MaKH"].Value.ToString();
-            txtHo.Text = dgvKhachHang.Rows[numrow].Cells["Ho"].Value.ToString();
-            txtTen.Text = dgvKhachHang.Rows[numrow].Cells["Ten"].Value.ToString();
-            txtDiaChi.Text = dgvKhachHang.Rows[numrow].Cells["DiaChi"].Value.ToString();
-            txtSDT.Text = dgvKhachHang.Rows[numrow].Cells["SDT"].Value.ToString();
-            cmbSex.Text = dgvKhachHang.Rows[numrow].Cells["GioiTinh"].Value.ToString();
-            txtID.Enabled = false;
-            label1.Enabled = false;
+            if (numrow > 0)
+            {
+                txtID.Text = dgvKhachHang.Rows[numrow].Cells["MaKH"].Value.ToString();
+                txtHo.Text = dgvKhachHang.Rows[numrow].Cells["Ho"].Value.ToString();
+                txtTen.Text = dgvKhachHang.Rows[numrow].Cells["Ten"].Value.ToString();
+                txtDiaChi.Text = dgvKhachHang.Rows[numrow].Cells["DiaChi"].Value.ToString();
+                txtSDT.Text = dgvKhachHang.Rows[numrow].Cells["SDT"].Value.ToString();
+                cmbSex.Text = dgvKhachHang.Rows[numrow].Cells["GioiTinh"].Value.ToString();
+                txtID.Enabled = false;
+                label1.Enabled = false;
+            }
         }
 
-        
+        private void cbbID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        public string getMaNV()
+        {
+            maKhach = cbbID.ValueMember;
+            return maKhach;
+        }
+        private void btOk_Click(object sender, EventArgs e)
+        {
+            getMaNV();
+            this.Close();
+        }
     }
 }
