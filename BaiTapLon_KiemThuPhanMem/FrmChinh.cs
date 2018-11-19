@@ -22,7 +22,7 @@ namespace BaiTapLon_KiemThuPhanMem
         }
         DataTable tbDonHang = new DataTable();
         DataTable tbtmp = new DataTable();
-        BUS_ChucNang bus = new BUS_ChucNang();
+        frmChinh_ChucNangBUS bus = new frmChinh_ChucNangBUS();
         bool flag = true;
         double tienNuoc = 0;
         double tienLoaiPizza = 0;
@@ -61,7 +61,6 @@ namespace BaiTapLon_KiemThuPhanMem
         //Chon Ten Banh
         private void CheckedChange_radTenBanh(object sender, EventArgs e)
         {
-            txtKhach.Text = maKhach;
             string tenBanh;
             RadioButton rad = sender as RadioButton;
             tenBanh = rad.Text;
@@ -265,12 +264,7 @@ namespace BaiTapLon_KiemThuPhanMem
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (lblTenBanh.Text != "")
-            {
-
-                FrmCustomers frmKhach = new FrmCustomers();
-                maKhach = frmKhach.maKhach;
-                txtKhach.Text = maKhach;
-
+            {   
                 tongTien = (tienVoBanh + tienTpPhu + tienNuoc + tienLoaiPizza) * tienSize;
                 Build bill = new Build(MaBanh_,lblTenBanh.Text, lblTpPhu.Text, lblSize.Text, lblDeBanh.Text, lblVienBanh.Text, lblThucUong.Text, tongTien);
                 bus.AddItemListView(bill, listView1);

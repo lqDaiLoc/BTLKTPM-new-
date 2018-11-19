@@ -11,7 +11,7 @@ using System.Data;
 
 namespace BUS
 {
-    public class BUS_ChucNang
+    public class frmChinh_ChucNangBUS
     {
         frmChinh_ChucNangDAo chucNang = new frmChinh_ChucNangDAo();
 
@@ -59,14 +59,19 @@ namespace BUS
         /// <param name="bill"></param>
         public void AddItemListView(Build bill, ListView listView1)
         {
-            ListViewItem pizza = new ListViewItem(bill.MaBanh.ToString());
-            pizza.SubItems.Add(bill.TenBanh);
-            pizza.SubItems.Add(bill.TpPhu);
-            pizza.SubItems.Add(bill.Size);
-            pizza.SubItems.Add(bill.DeBanh + " " + bill.VienBanh);
-            pizza.SubItems.Add(bill.ThucUong);
-            pizza.SubItems.Add(bill.TongTien.ToString());
-            listView1.Items.Add(pizza);
+            if (bill.TenBanh.ToString() != "")
+            {
+                ListViewItem pizza = new ListViewItem(bill.MaBanh.ToString());
+                pizza.SubItems.Add(bill.TenBanh);
+                pizza.SubItems.Add(bill.TpPhu);
+                pizza.SubItems.Add(bill.Size);
+                pizza.SubItems.Add(bill.DeBanh + " " + bill.VienBanh);
+                pizza.SubItems.Add(bill.ThucUong);
+                pizza.SubItems.Add(bill.TongTien.ToString());
+                listView1.Items.Add(pizza);
+            }
+            else
+                MessageBox.Show("Chua chon ten Banh", "error");
         }
         /// <summary>
         /// Xóa những bánh nào đã được click

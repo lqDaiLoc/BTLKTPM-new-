@@ -5,6 +5,7 @@ using BUS;
 using TOD;
 using BaiTapLon_KiemThuPhanMem;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Test1
 {
@@ -129,7 +130,7 @@ namespace Test1
         public void TestGetDataTableBanh()
         {
             DataTable tb = new DataProvider().GetDataTableBanh();
-            int expected = 22;
+            int expected = 24;
             int actual = tb.Rows.Count;
             Assert.AreEqual(expected, actual);
         }
@@ -138,7 +139,7 @@ namespace Test1
         public void TestGetDataTableChiTietBanh()
         {
             DataTable tb = new DataProvider().GetDataTableChiTietBanh();
-            int expected = 26;
+            int expected = 1;
             int actual = tb.Rows.Count;
             Assert.AreEqual(expected, actual);
         }
@@ -147,7 +148,7 @@ namespace Test1
         public void TestGetDataTableDonHang()
         {
             DataTable tb = new DataProvider().GetDataTableDonHang();
-            int expected = 2;
+            int expected = 4;
             int actual = tb.Rows.Count;
             Assert.AreEqual(expected, actual);
         }
@@ -156,7 +157,7 @@ namespace Test1
         public void TestGetDataTableDonHang_Banh()
         {
             DataTable tb = new DataProvider().GetDataTableDonHang_Banh();
-            int expected = 3;
+            int expected = 5;
             int actual = tb.Rows.Count;
             Assert.AreEqual(expected, actual);
         }
@@ -222,7 +223,7 @@ namespace Test1
             DataRow row = tb.NewRow();
             row[0] = 100;
             tb.Rows.Add(row);
-            int expected = 23;
+            int expected = 25;
             int actual = tb.Rows.Count;
             Assert.AreEqual(expected, actual);
             foreach (DataRow item in tb.Rows)
@@ -234,7 +235,7 @@ namespace Test1
                 }
             }
             new DataProvider().updateTableBanh(tb);
-            expected = 22;
+            expected = 24;
             actual = tb.Rows.Count;
             Assert.AreEqual(expected, actual);
         }
@@ -251,7 +252,7 @@ namespace Test1
             row[4] = 1;
             row[5] = 39000;
             tb.Rows.Add(row);
-            int expected = 27;
+            int expected = 2;
             int actual = tb.Rows.Count;
             Assert.AreEqual(expected, actual);
             foreach (DataRow item in tb.Rows)
@@ -263,7 +264,7 @@ namespace Test1
                 }
             }
             new DataProvider().updateTableChiTietBanh(tb);
-            expected = 26;
+            expected = 1;
             actual = tb.Rows.Count;
             Assert.AreEqual(expected, actual);
         }
@@ -278,7 +279,7 @@ namespace Test1
             row[2] = "102";
             row[3] = DateTime.Today;
             tb.Rows.Add(row);
-            int expected = 3;
+            int expected = 5;
             int actual = tb.Rows.Count;
             Assert.AreEqual(expected, actual);
             foreach (DataRow item in tb.Rows)
@@ -290,7 +291,7 @@ namespace Test1
                 }
             }
             new DataProvider().updateTableDonHang(tb);
-            expected = 2;
+            expected = 4;
             actual = tb.Rows.Count;
             Assert.AreEqual(expected, actual);
         }
@@ -303,7 +304,7 @@ namespace Test1
             row[0] = 100002;
             row[1] = 1;
             tb.Rows.Add(row);
-            int expected = 4;
+            int expected = 6;
             int actual = tb.Rows.Count;
             Assert.AreEqual(expected, actual);
             foreach (DataRow item in tb.Rows)
@@ -315,7 +316,7 @@ namespace Test1
                 }
             }
             new DataProvider().updateTableDonHang_Banh(tb);
-            expected = 3;
+            expected = 5;
             actual = tb.Rows.Count;
             Assert.AreEqual(expected, actual);
         }
@@ -394,7 +395,7 @@ namespace Test1
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void TestThemNVThieu1()
+        public void TestThemNVThieu7()
         {
             DataTable tb = new DataProvider().GetDataTableNhanVien();
             Employees employees = new Employees("109", "123", "", "", "", "", "", "", "");
@@ -405,10 +406,30 @@ namespace Test1
 
         }
         [TestMethod]
-        public void TestThemNVThieu2()
+        public void TestThemNVThieu6()
         {
             DataTable tb = new DataProvider().GetDataTableNhanVien();
-            Employees employees = new Employees("109", "", "123", "", "", "", "", "", "");
+            Employees employees = new Employees("109", "123", "123", "", "", "", "", "", "");
+            emp.Them(tb, employees);
+            int expected = 4;
+            int actual = tb.Rows.Count;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void TestThemNVThieu5()
+        {
+            DataTable tb = new DataProvider().GetDataTableNhanVien();
+            Employees employees = new Employees("109", "123", "123", "123", "123", "", "", "", "");
+            emp.Them(tb, employees);
+            int expected = 4;
+            int actual = tb.Rows.Count;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void TestThemNVThieu4()
+        {
+            DataTable tb = new DataProvider().GetDataTableNhanVien();
+            Employees employees = new Employees("109", "123", "123", "123", "123", "", "", "", "");
             emp.Them(tb, employees);
             int expected = 4;
             int actual = tb.Rows.Count;
@@ -418,7 +439,27 @@ namespace Test1
         public void TestThemNVThieu3()
         {
             DataTable tb = new DataProvider().GetDataTableNhanVien();
-            Employees employees = new Employees("109", "", "", "", "123", "", "", "", "");
+            Employees employees = new Employees("109", "123", "123", "123", "123", "123", "", "", "");
+            emp.Them(tb, employees);
+            int expected = 4;
+            int actual = tb.Rows.Count;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void TestThemNVThieu2()
+        {
+            DataTable tb = new DataProvider().GetDataTableNhanVien();
+            Employees employees = new Employees("109", "123", "123", "123", "123", "123", "123", "", "");
+            emp.Them(tb, employees);
+            int expected = 4;
+            int actual = tb.Rows.Count;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void TestThemNVThieu1()
+        {
+            DataTable tb = new DataProvider().GetDataTableNhanVien();
+            Employees employees = new Employees("109", "123", "123", "123", "123", "123", "123", "123", "");
             emp.Them(tb, employees);
             int expected = 4;
             int actual = tb.Rows.Count;
@@ -459,6 +500,23 @@ namespace Test1
             emp.Sua(tb.Rows[3], employees);
             Assert.AreEqual("0125", tb.Rows[3][8].ToString());
         }
+        [TestMethod]
+        public void TestSuaNV_GioiTinh()
+        {
+            DataTable tb = new DataProvider().GetDataTableNhanVien();
+            Employees employees = new Employees("104", "Nguyễn", "Mai Vy Ly", "1997 - 10 - 10", "Nam", "Agent", "2018 - 03 - 01", "9 Nguyễn Ảnh Thủ H.Hóc Môn", "0125");
+            emp.Sua(tb.Rows[3], employees);
+            Assert.AreEqual("Nam", tb.Rows[3][4].ToString());
+        }
+        [TestMethod]
+        public void TestSuaNV_NgaySinh()
+        {
+            DataTable tb = new DataProvider().GetDataTableNhanVien();
+            Employees employees = new Employees("104", "Nguyễn", "Mai Vy Ly", "2000 - 10 - 10", "Nam", "Agent", "2018 - 03 - 01", "9 Nguyễn Ảnh Thủ H.Hóc Môn", "0125");
+            emp.Sua(tb.Rows[3], employees);
+            Assert.AreEqual("2000 - 10 - 10", tb.Rows[3][3].ToString());
+        }
+
         CustomersBUS cus = new CustomersBUS();
         [TestMethod]
         public void TestThemKH()
@@ -482,10 +540,30 @@ namespace Test1
         }
 
         [TestMethod]
-        public void TestThemKHThieuDuLieu()
+        public void TestThemKHThieu1DuLieu()
+        {
+            DataTable tb = new DataProvider().GetDataTableKhachHang();
+            Customers customers = new Customers("C09", "23123", "123", "", "1997 - 10 - 10", "9 Nguyễn Ảnh Thủ H.Hóc Môn", "0125");
+            int expected = tb.Rows.Count;
+            cus.Them(tb, customers);
+            int actual = tb.Rows.Count;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void TestThemKHThieu2DuLieu()
         {
             DataTable tb = new DataProvider().GetDataTableKhachHang();
             Customers customers = new Customers("C09", "23123", "", "", "1997 - 10 - 10", "9 Nguyễn Ảnh Thủ H.Hóc Môn", "0125");
+            int expected = tb.Rows.Count;
+            cus.Them(tb, customers);
+            int actual = tb.Rows.Count;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void TestThemKHThieu3DuLieu()
+        {
+            DataTable tb = new DataProvider().GetDataTableKhachHang();
+            Customers customers = new Customers("C09", "23123", "", "", "", "9 Nguyễn Ảnh Thủ H.Hóc Môn", "0125");
             int expected = tb.Rows.Count;
             cus.Them(tb, customers);
             int actual = tb.Rows.Count;
@@ -495,7 +573,7 @@ namespace Test1
         [TestMethod]
         public void TestSuaKH_Ten()
         {
-            DataTable tb = new DataProvider().GetDataTableNhanVien();
+            DataTable tb = new DataProvider().GetDataTableKhachHang();
             Customers customers = new Customers("C01", "23123", "", "", "1997 - 10 - 10", "9 Nguyễn Ảnh Thủ H.Hóc Môn", "0125");
             cus.Sua(tb.Rows[0], customers);
             Assert.AreEqual("23123", tb.Rows[0][1].ToString());
@@ -504,19 +582,80 @@ namespace Test1
         [TestMethod]
         public void TestSuaKH_Ho()
         {
-            DataTable tb = new DataProvider().GetDataTableNhanVien();
+            DataTable tb = new DataProvider().GetDataTableKhachHang();
             Customers customers = new Customers("C01", "23123", "", "", "1997 - 10 - 10", "9 Nguyễn Ảnh Thủ H.Hóc Môn", "0125");
             cus.Sua(tb.Rows[0], customers);
             Assert.AreEqual("", tb.Rows[0][2].ToString());
         }
 
         [TestMethod]
-        public void TestSuaKH_SDT()
+        public void TestSuaKH_DiaChi()
         {
-            DataTable tb = new DataProvider().GetDataTableNhanVien();
-            Customers customers = new Customers("C01", "23123", "", "", "1997 - 10 - 10", "9 Nguyễn Ảnh Thủ H.Hóc Môn", "0125");
+            DataTable tb = new DataProvider().GetDataTableKhachHang();
+            Customers customers = new Customers("C01", "23123", "", "", "1997 - 10 - 10", "My", "0125");
             cus.Sua(tb.Rows[0], customers);
-            Assert.AreEqual("0125", tb.Rows[0][6].ToString());
+            Assert.AreEqual("My", tb.Rows[0][5].ToString());
         }
+
+        [TestMethod]
+        public void TestSuaKH_GioiTinh()
+        {
+            DataTable tb = new DataProvider().GetDataTableKhachHang();
+            Customers customers = new Customers("C01", "23123", "Nu", "", "1997 - 10 - 10", "My", "0125");
+            cus.Sua(tb.Rows[0], customers);
+            Assert.AreEqual("Nu", tb.Rows[0][2].ToString());
+        }
+
+        frmChinh_ChucNangBUS cn = new frmChinh_ChucNangBUS();
+        [TestMethod]
+        public void TestSubmit()
+        {
+            Build bill = new Build(1002, "BRau", "Cá Ngừ", "", "", "", "", 12);
+            ListView List = new ListView();
+            cn.AddItemListView(bill, List);
+            Assert.AreEqual(1, List.Items.Count);
+        }
+        [TestMethod]
+        public void TestSubmit_BanhROng()
+        {
+            Build bill = new Build(1002, "", "Cá Ngừ", "", "", "", "", 12);
+            ListView List = new ListView();
+            cn.AddItemListView(bill, List);
+            Assert.AreEqual(0, List.Items.Count);
+        }
+
+        [TestMethod]
+        public void TestLuuDonHang_HoaDon()
+        {
+            DataTable tb = new DataProvider().GetDataTableDonHang();
+            int expected = tb.Rows.Count + 1;
+            cn.updateDuLieuHoaDon("C01", "102", 100009);
+            tb = new DataProvider().GetDataTableDonHang();
+            int actual = tb.Rows.Count;
+            
+            Assert.AreEqual(expected, actual);
+            tb.Rows[4].Delete();
+            new DataProvider().updateTableDonHang(tb);
+        }
+        [TestMethod]
+        public void TestLuuDonHang_ChiTietBanh()
+        {
+            DataTable tb = new DataProvider().GetDataTableChiTietBanh();
+            int expected = tb.Rows.Count + 1;
+
+            DataRow row = tb.NewRow();
+            row[0] = "10";
+            row[1] = "501";
+            cn.updateDuLieuChiTietDon(row);
+            tb = new DataProvider().GetDataTableChiTietBanh();
+            int actual = tb.Rows.Count;
+            Assert.AreEqual(expected, actual);
+            tb.Rows[1].Delete();
+            new DataProvider().updateTableChiTietBanh(tb);
+        }
+        
+        
+
+
     }
 }
