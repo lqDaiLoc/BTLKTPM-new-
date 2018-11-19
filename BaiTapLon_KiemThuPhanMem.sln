@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaiTapLon_KiemThuPhanMem", "BaiTapLon_KiemThuPhanMem\BaiTapLon_KiemThuPhanMem.csproj", "{ACDE4122-9375-4894-9720-15E8C52CB3EF}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{74A1177B-0DF3-414A-AEEC-67B84270E4CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOD", "TOD1\TOD.csproj", "{4FB968E1-ECA0-479C-BC44-F919855EC5F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test1", "Test1\Test1.csproj", "{2D5899C4-3A23-47C5-AFB0-38B65575A891}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4FB968E1-ECA0-479C-BC44-F919855EC5F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FB968E1-ECA0-479C-BC44-F919855EC5F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FB968E1-ECA0-479C-BC44-F919855EC5F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D5899C4-3A23-47C5-AFB0-38B65575A891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D5899C4-3A23-47C5-AFB0-38B65575A891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D5899C4-3A23-47C5-AFB0-38B65575A891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D5899C4-3A23-47C5-AFB0-38B65575A891}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
