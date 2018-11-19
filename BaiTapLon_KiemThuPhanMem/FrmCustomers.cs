@@ -162,10 +162,21 @@ namespace BaiTapLon_KiemThuPhanMem
         {
 
             if (txtKhach.Text != "")
-                maKhach = txtKhach.Text;
+            {
+                foreach (DataRow row in tb_Khach.Rows)
+                {
+                    if (string.Compare(row[0].ToString(), txtKhach.Text) == 0)
+                    {
+                        maKhach = txtKhach.Text;
+                        this.Close();
+                    }
+                    else
+                        MessageBox.Show("Khong co Ma khach hang nay", "nhap sai MaKH");
+                }
+            }
             else
                 MessageBox.Show("Phai Nhap MA KHach", "error");
-            this.Close();
+            
         }
     }
 }

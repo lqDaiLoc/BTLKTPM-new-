@@ -51,6 +51,12 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestChucNang.cs" />
+    <Compile Include="TestCustomer.cs" />
+    <Compile Include="TestDataProvider.cs" />
+    <Compile Include="TestEmloyees.cs" />
+    <Compile Include="TestLogin.cs" />
+    <Compile Include="TestTimKiem.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

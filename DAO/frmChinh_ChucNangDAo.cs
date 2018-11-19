@@ -161,6 +161,7 @@ namespace DAO
             rowDonHang[0] = maHoaDon;
             rowDonHang[1] = MaKhach;
             rowDonHang[2] = MaNV;
+            rowDonHang[3] = string.Format("{0:dd/MM/yyyy}",DateTime.Now);
             tbDonHang.Rows.Add(rowDonHang);
             updateTableDonHang(tbDonHang);
         }
@@ -180,6 +181,14 @@ namespace DAO
             rowChiTietBanh[5] = row[5];
             tbChiTiet.Rows.Add(rowChiTietBanh);
             updateTableChiTietBanh(tbChiTiet);
+        }
+        public void XoaItemListView(ListView listView1, int selected)
+        {
+            listView1.Items[selected].Remove();
+        }
+        public void XoaItemListView(DataTable tb, int selected)
+        {
+            tb.Rows.Remove(tb.Rows[selected]);
         }
     }
 }

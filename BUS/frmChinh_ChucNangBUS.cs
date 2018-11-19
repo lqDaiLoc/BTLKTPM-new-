@@ -80,7 +80,7 @@ namespace BUS
         public void XoaItemListView(DataTable tb, ListView listView1)
         {
             string maBanh = "";
-
+            
             // Xoa trong listView
             for (int i = 0; i < listView1.Items.Count; i++)
             {
@@ -88,7 +88,7 @@ namespace BUS
                 if (listView1.Items[i].Selected)
                 {
                     maBanh = listView1.Items[i].Text;
-                    listView1.Items[i].Remove();
+                    chucNang.XoaItemListView(listView1, i);
                 }
             }
             for (int i = 0; i < listView1.Items.Count; i++)
@@ -106,7 +106,8 @@ namespace BUS
                 string s = tb.Rows[i]["MaBanh"].ToString();
                 if (s == maBanh.ToString())
                 {
-                    tb.Rows.Remove(tb.Rows[i]);
+                    chucNang.XoaItemListView(tb, i);
+                    //tb.Rows.Remove(tb.Rows[i]);
                     i--;
                 }
             }
@@ -184,26 +185,32 @@ namespace BUS
         /// <param name="tb"></param>
         /// <param name="list"></param>
         public void ThemHoaDon(string MaNV, string MaKhach, DataTable tb, ListView list)
-        {            
-            if (tb.Rows.Count != 0)
-            { 
-                
-                // update ddu lieu len tb HOADON
-                int maHoaDon = getMaHoaDon();
-                updateDuLieuHoaDon(MaKhach, MaNV, maHoaDon);
-                int maBanh = GetMaBanh() - 1;
-                foreach (DataRow row in tb.Rows)
+        {
+            if (list.Items.Count > 0)
+            {
+                if (tb.Rows.Count != 0)
                 {
-                    if (int.Parse(row[0].ToString()) != maBanh)
+                    // update ddu lieu len tb HOADON
+                    int maHoaDon = getMaHoaDon();
+                    updateDuLieuHoaDon(MaKhach, MaNV, maHoaDon);
+                    int maBanh = GetMaBanh() - 1;
+                    foreach (DataRow row in tb.Rows)
                     {
-                        maBanh = int.Parse(row[0].ToString());
-                        updateDuLieu_Banh(maBanh);
-                        updateDuLieuDonHang_Banh(maHoaDon, maBanh);
+                        if (int.Parse(row[0].ToString()) != maBanh)
+                        {
+                            maBanh = int.Parse(row[0].ToString());
+                            updateDuLieu_Banh(maBanh);
+                            updateDuLieuDonHang_Banh(maHoaDon, maBanh);
+                        }
+                        updateDuLieuChiTietDon(row);
                     }
-                    updateDuLieuChiTietDon(row);
+                    tb.Clear();
+                    list.Items.Clear();
                 }
-                tb.Clear();
-                list.Items.Clear() ;
+            }
+            else
+            {
+                MessageBox.Show("Luu Bill That Bai", "Error");
             }
         }
     }

@@ -48,9 +48,19 @@ namespace DAO
         }
         public void Del(int row, DataTable daT)
         {
-            daT.Rows[row].Delete();
-
-            updateTableKhach(daT);
+            string maKH = daT.Rows[row][0].ToString();
+            bool Xoa = true;
+            DataTable tb = GetDataTableKhachHang();
+            foreach(DataRow item in tb.Rows)
+            {
+                if (string.Compare(item[0].ToString(), maKH) == 0)
+                    Xoa = false;
+            }
+            if (Xoa)
+                daT.Rows[row].Delete();
+            else
+                MessageBox.Show("khong Xoa duoc, anh huong den nhung csdl khac....", "Khong xoa dc");
+            //updateTableKhach(daT);
         }
         public void Update(DataTable daT)
         {

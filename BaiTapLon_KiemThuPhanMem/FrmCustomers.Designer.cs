@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtKhach = new System.Windows.Forms.TextBox();
             this.btOk = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.NgaySinh = new System.Windows.Forms.DateTimePicker();
@@ -52,8 +54,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvKhachHang = new System.Windows.Forms.DataGridView();
             this.Del = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtKhach = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -88,6 +88,15 @@
             this.splitContainer1.SplitterDistance = 63;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(251, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "label7";
             // 
             // btnEdit
             // 
@@ -167,6 +176,13 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Khách Mua";
+            // 
+            // txtKhach
+            // 
+            this.txtKhach.Location = new System.Drawing.Point(91, 46);
+            this.txtKhach.Name = "txtKhach";
+            this.txtKhach.Size = new System.Drawing.Size(159, 22);
+            this.txtKhach.TabIndex = 8;
             // 
             // btOk
             // 
@@ -341,27 +357,12 @@
             this.Del.HeaderText = "Xóa";
             this.Del.Name = "Del";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(251, 21);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 17);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "label7";
-            // 
-            // txtKhach
-            // 
-            this.txtKhach.Location = new System.Drawing.Point(91, 46);
-            this.txtKhach.Name = "txtKhach";
-            this.txtKhach.Size = new System.Drawing.Size(159, 22);
-            this.txtKhach.TabIndex = 8;
-            // 
             // FrmCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(909, 572);
+            this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCustomers";

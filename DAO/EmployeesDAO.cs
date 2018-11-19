@@ -54,51 +54,55 @@ namespace DAO
         }
         public void Del(int row, DataTable daT)
         {
-            try
+            string maNV = daT.Rows[row][0].ToString();
+            bool Xoa = true;
+            DataTable tb = GetDataTableNhanVien();
+            foreach (DataRow item in tb.Rows)
             {
+                if (string.Compare(item[0].ToString(), maNV) == 0)
+                    Xoa = false;
+            }
+            if (Xoa)
                 daT.Rows[row].Delete();
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            updateTableNhanVien(daT);
+            else
+                MessageBox.Show("khong Xoa duoc, anh huong den nhung csdl khac....", "Khong xoa dc");
+            //updateTableKhach(daT);
 
         }
-        
-        private void Del_TbChiTietBanh(string maBanh, DataTable tb_ChiTietBanh)
-        {
-            foreach(DataRow row in tb_ChiTietBanh.Rows)
-            {
-                if(string.Compare(row["MaBanh"].ToString(), maBanh) == 0)
-                {
-                    row.Delete();
-                }
-            }
-            updateTableChiTietBanh(tb_ChiTietBanh);
-        }
-        private void Del_TbDonHang(string maDonHang, DataTable tb_DonHang)
-        {
-            foreach (DataRow row in tb_DonHang.Rows)
-            {
-                if (string.Compare(row["MaDH"].ToString(), maDonHang) == 0)
-                {
-                    row.Delete();
-                }
-            }
-            updateTableDonHang(tb_DonHang);
-        }
-        private void Del_DonHang_Banh(string maDonHang, DataTable DonHang_Banh)
-        {
-            foreach (DataRow row_DonHang_Banh in DonHang_Banh.Rows)
-            {
-                if (string.Compare(row_DonHang_Banh["MaDH"].ToString(), maDonHang) == 0)
-                {
-                    row_DonHang_Banh.Delete();
-                }
-            }
-            updateTableDonHang_Banh(DonHang_Banh);
-        }
+
+        //private void Del_TbChiTietBanh(string maBanh, DataTable tb_ChiTietBanh)
+        //{
+        //    foreach(DataRow row in tb_ChiTietBanh.Rows)
+        //    {
+        //        if(string.Compare(row["MaBanh"].ToString(), maBanh) == 0)
+        //        {
+        //            row.Delete();
+        //        }
+        //    }
+        //    updateTableChiTietBanh(tb_ChiTietBanh);
+        //}
+        //private void Del_TbDonHang(string maDonHang, DataTable tb_DonHang)
+        //{
+        //    foreach (DataRow row in tb_DonHang.Rows)
+        //    {
+        //        if (string.Compare(row["MaDH"].ToString(), maDonHang) == 0)
+        //        {
+        //            row.Delete();
+        //        }
+        //    }
+        //    updateTableDonHang(tb_DonHang);
+        //}
+        //private void Del_DonHang_Banh(string maDonHang, DataTable DonHang_Banh)
+        //{
+        //    foreach (DataRow row_DonHang_Banh in DonHang_Banh.Rows)
+        //    {
+        //        if (string.Compare(row_DonHang_Banh["MaDH"].ToString(), maDonHang) == 0)
+        //        {
+        //            row_DonHang_Banh.Delete();
+        //        }
+        //    }
+        //    updateTableDonHang_Banh(DonHang_Banh);
+        //}
         public void Update(DataTable daT)
         {
             updateTableNhanVien(daT);

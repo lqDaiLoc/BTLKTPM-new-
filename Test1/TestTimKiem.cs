@@ -9,15 +9,12 @@ using System.Windows.Forms;
 
 namespace Test1
 {
+    /// <summary>
+    /// Summary description for TestTimKiem
+    /// </summary>
     [TestClass]
-    public class UnitTest1
+    public class TestTimKiem
     {
         
-       
-        
-        
-        
-
-
     }
 }
