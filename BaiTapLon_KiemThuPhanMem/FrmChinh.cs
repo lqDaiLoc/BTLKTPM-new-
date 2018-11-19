@@ -40,6 +40,9 @@ namespace BaiTapLon_KiemThuPhanMem
             this.Visible = false;
             frmLogin frm = new frmLogin();
             DialogResult result = frm.ShowDialog();
+            FrmCustomers frmCus = new FrmCustomers();
+            frmCus.ShowDialog();
+            maKhach = frmCus.maKhach;
             if (result == DialogResult.OK)
             {
                 this.Enabled = true;
@@ -52,13 +55,12 @@ namespace BaiTapLon_KiemThuPhanMem
                     btnNhapTTNhanVien.Enabled = true;
                 }
             }
+            txtKhach.Text = maKhach;
         }
 //--------------------------------------------------------------------------------------------------------------------------------------
         //Chon Ten Banh
         private void CheckedChange_radTenBanh(object sender, EventArgs e)
         {
-            FrmCustomers frmKhach = new FrmCustomers();
-            maKhach = frmKhach.getMaNV();
             txtKhach.Text = maKhach;
             string tenBanh;
             RadioButton rad = sender as RadioButton;

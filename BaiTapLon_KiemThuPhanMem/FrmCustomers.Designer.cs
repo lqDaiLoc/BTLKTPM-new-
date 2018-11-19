@@ -33,6 +33,9 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btOk = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.NgaySinh = new System.Windows.Forms.DateTimePicker();
             this.cmbSex = new System.Windows.Forms.ComboBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
@@ -49,10 +52,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvKhachHang = new System.Windows.Forms.DataGridView();
             this.Del = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbbID = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btOk = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtKhach = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -61,8 +62,8 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -75,6 +76,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label7);
             this.splitContainer1.Panel1.Controls.Add(this.btnEdit);
             this.splitContainer1.Panel1.Controls.Add(this.btnUpdate);
             this.splitContainer1.Panel1.Controls.Add(this.btnAdd);
@@ -153,6 +155,38 @@
             this.splitContainer2.SplitterDistance = 197;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtKhach);
+            this.groupBox1.Controls.Add(this.btOk);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Location = new System.Drawing.Point(642, 76);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(266, 112);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Khách Mua";
+            // 
+            // btOk
+            // 
+            this.btOk.Location = new System.Drawing.Point(90, 77);
+            this.btOk.Name = "btOk";
+            this.btOk.Size = new System.Drawing.Size(75, 23);
+            this.btOk.TabIndex = 7;
+            this.btOk.Text = "OK";
+            this.btOk.UseVisualStyleBackColor = true;
+            this.btOk.Click += new System.EventHandler(this.btOk_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 46);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(33, 17);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Tên";
             // 
             // NgaySinh
             // 
@@ -307,46 +341,21 @@
             this.Del.HeaderText = "Xóa";
             this.Del.Name = "Del";
             // 
-            // label8
+            // label7
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 46);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(33, 17);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Tên";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(251, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "label7";
             // 
-            // cbbID
+            // txtKhach
             // 
-            this.cbbID.FormattingEnabled = true;
-            this.cbbID.Location = new System.Drawing.Point(90, 43);
-            this.cbbID.Name = "cbbID";
-            this.cbbID.Size = new System.Drawing.Size(160, 24);
-            this.cbbID.TabIndex = 6;
-            this.cbbID.SelectedIndexChanged += new System.EventHandler(this.cbbID_SelectedIndexChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btOk);
-            this.groupBox1.Controls.Add(this.cbbID);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Location = new System.Drawing.Point(642, 76);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(266, 112);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Khách Mua";
-            // 
-            // btOk
-            // 
-            this.btOk.Location = new System.Drawing.Point(90, 77);
-            this.btOk.Name = "btOk";
-            this.btOk.Size = new System.Drawing.Size(75, 23);
-            this.btOk.TabIndex = 7;
-            this.btOk.Text = "OK";
-            this.btOk.UseVisualStyleBackColor = true;
-            this.btOk.Click += new System.EventHandler(this.btOk_Click);
+            this.txtKhach.Location = new System.Drawing.Point(91, 46);
+            this.txtKhach.Name = "txtKhach";
+            this.txtKhach.Size = new System.Drawing.Size(159, 22);
+            this.txtKhach.TabIndex = 8;
             // 
             // FrmCustomers
             // 
@@ -359,6 +368,7 @@
             this.Text = "FrmKhachHang";
             this.Load += new System.EventHandler(this.FrmKhachHang_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -367,9 +377,9 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -398,8 +408,9 @@
         private System.Windows.Forms.DataGridView dgvKhachHang;
         private System.Windows.Forms.DataGridViewButtonColumn Del;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cbbID;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btOk;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtKhach;
     }
 }

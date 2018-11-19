@@ -69,6 +69,10 @@
       <Project>{74a1177b-0df3-414a-aeec-67b84270e4cd}</Project>
       <Name>DAO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TOD1\TOD.csproj">
+      <Project>{4FB968E1-ECA0-479C-BC44-F919855EC5F1}</Project>
+      <Name>TOD</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

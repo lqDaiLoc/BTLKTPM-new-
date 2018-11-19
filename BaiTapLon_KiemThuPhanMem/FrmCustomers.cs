@@ -29,9 +29,7 @@ namespace BaiTapLon_KiemThuPhanMem
             tb_Khach = BUS.tb_Khach;
             dgvKhachHang.DataSource = tb_Khach;
 
-            cbbID.DataSource = tb_Khach;
-            cbbID.DisplayMember = "Ten";
-            cbbID.ValueMember = "MaKH";            
+                      
         }
 
         private Customers GetCustomers()
@@ -159,14 +157,14 @@ namespace BaiTapLon_KiemThuPhanMem
             
         }
 
-        public string getMaNV()
-        {
-            maKhach = cbbID.ValueMember;
-            return maKhach;
-        }
+        
         private void btOk_Click(object sender, EventArgs e)
         {
-            getMaNV();
+
+            if (txtKhach.Text != "")
+                maKhach = txtKhach.Text;
+            else
+                MessageBox.Show("Phai Nhap MA KHach", "error");
             this.Close();
         }
     }

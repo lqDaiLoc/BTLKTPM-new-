@@ -13,7 +13,7 @@ namespace DAO
     {
         private void AddRow(DataRow row, Customers cus)
         {
-            row["MaKH"] = cus.MaKH;
+            row[0] = cus.MaKH;
             row["Ho"] = cus.Ho;
             row["Ten"] = cus.Ten;
             row["DiaChi"] = cus.DiaChi;
@@ -24,17 +24,22 @@ namespace DAO
 
         public void Them(DataTable daT, Customers cus)
         {
-            foreach (DataRow r in daT.Rows)
+            if (cus.MaKH != "" && cus.Ho != "" && cus.Ten != "" && cus.GioiTinh != "" && cus.NgaySinh != "" && cus.DiaChi != "" && cus.SDT != "")
             {
-                if (string.Compare(r["MaKH"].ToString(), cus.MaKH) == 0)
+                foreach (DataRow r in daT.Rows)
                 {
-                    MessageBox.Show("Trùng Mã Nhân Viên", "Cảnh Báo");
-                    return;
+                    if (string.Compare(r["MaKH"].ToString(), cus.MaKH) == 0)
+                    {
+                        MessageBox.Show("Trùng Mã Khach", "Cảnh Báo");
+                        return;
+                    }
                 }
+                DataRow row = daT.NewRow();
+                AddRow(row, cus);
+                daT.Rows.Add(row);
             }
-            DataRow row = daT.NewRow();
-            AddRow(row, cus);
-            daT.Rows.Add(row);
+            else
+                MessageBox.Show("thieu Du Lieu", "error");
         }
 
         public void Sua(DataRow row, Customers cus)

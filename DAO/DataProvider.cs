@@ -132,42 +132,85 @@ namespace DAO
         {
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Banh", cnn);
             SqlCommandBuilder scb = new SqlCommandBuilder(da);
-            da.Update(tb);
+            try
+            {
+                da.Update(tb);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
         }
         // update Table Don Hang
         public void updateTableDonHang(DataTable tb)
         {
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM DonHang", cnn);
             SqlCommandBuilder scb = new SqlCommandBuilder(da);
-            da.Update(tb);
+            try
+            {
+                da.Update(tb);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
         }
         // update Table DonHang_Banh
         public void updateTableDonHang_Banh(DataTable tb)
         {
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM DonHang_Banh", cnn);
             SqlCommandBuilder scb = new SqlCommandBuilder(da);
-            da.Update(tb);
+            try
+            {
+                da.Update(tb);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
         }
         // updata Table chi tiet Banh
         public void updateTableChiTietBanh(DataTable tb)
         {
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM ChiTietBanh", cnn);
             SqlCommandBuilder scb = new SqlCommandBuilder(da);
-            da.Update(tb);
+            try
+            {
+                da.Update(tb);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
         }
         // update Table Khach
         public void updateTableKhach(DataTable tb)
         {
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM KhachHang", cnn);
             SqlCommandBuilder scb = new SqlCommandBuilder(da);
-            da.Update(tb);
+            try
+            {
+                da.Update(tb);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            
         }
         // update Table NhanVien
         public void updateTableNhanVien(DataTable tb)
         {
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM NhanVien", cnn);
             SqlCommandBuilder scb = new SqlCommandBuilder(da);
-            da.Update(tb);
+            try
+            {
+                da.Update(tb);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
         }
 
         //---------------------------------------------------------------------------------------------------------------

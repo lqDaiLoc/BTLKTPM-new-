@@ -29,17 +29,23 @@ namespace DAO
 
         public void Them(DataTable daT, Employees employees)
         {
-            foreach (DataRow r in daT.Rows)
+            if (employees.MaNV != "" && employees.Ho != "" && employees.Ten != "" && employees.GioiTinh != "" && employees.NgaySinh != "" && employees.ChucVu != "" && employees.NgayThue != "" && employees.DiaChi != "" && employees.SDT != "")
             {
-                if (string.Compare(r["MaNV"].ToString(), employees.MaNV) == 0)
+                foreach (DataRow r in daT.Rows)
                 {
-                    MessageBox.Show("Trùng Mã Nhân Viên", "Cảnh Báo");
-                    return;
+                    if (string.Compare(r["MaNV"].ToString(), employees.MaNV) == 0)
+                    {
+                        MessageBox.Show("Trùng Mã Nhân Viên", "Cảnh Báo");
+                        return;
+                    }
                 }
+                DataRow row = daT.NewRow();
+                AddRow(row, employees);
+                daT.Rows.Add(row);
             }
-            DataRow row = daT.NewRow();
-            AddRow(row, employees);
-            daT.Rows.Add(row);
+            else
+                MessageBox.Show("Thieu du loei", "error");
+
         }
 
         public void Sua(DataRow row, Employees employees)
@@ -54,7 +60,6 @@ namespace DAO
             }
             catch (SqlException ex)
             {
-
                 throw ex;
             }
             updateTableNhanVien(daT);
