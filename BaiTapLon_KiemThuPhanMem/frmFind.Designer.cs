@@ -35,6 +35,10 @@
             this.lbNgayDat = new System.Windows.Forms.Label();
             this.lbMaNV = new System.Windows.Forms.Label();
             this.btnTK = new System.Windows.Forms.Button();
+            this.maDH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngayDat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKetQua)).BeginInit();
             this.groupBoxTK.SuspendLayout();
             this.SuspendLayout();
@@ -42,6 +46,11 @@
             // dgvKetQua
             // 
             this.dgvKetQua.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKetQua.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.maDH,
+            this.maKH,
+            this.maNV,
+            this.ngayDat});
             this.dgvKetQua.Location = new System.Drawing.Point(13, 183);
             this.dgvKetQua.Name = "dgvKetQua";
             this.dgvKetQua.RowTemplate.Height = 24;
@@ -104,6 +113,30 @@
             this.btnTK.UseVisualStyleBackColor = true;
             this.btnTK.Click += new System.EventHandler(this.btnTK_Click);
             // 
+            // maDH
+            // 
+            this.maDH.DataPropertyName = "maDH";
+            this.maDH.HeaderText = "Mã ĐH";
+            this.maDH.Name = "maDH";
+            // 
+            // maKH
+            // 
+            this.maKH.DataPropertyName = "maKH";
+            this.maKH.HeaderText = "Mã KH";
+            this.maKH.Name = "maKH";
+            // 
+            // maNV
+            // 
+            this.maNV.DataPropertyName = "maNV";
+            this.maNV.HeaderText = "Mã NV";
+            this.maNV.Name = "maNV";
+            // 
+            // ngayDat
+            // 
+            this.ngayDat.DataPropertyName = "ngayDat";
+            this.ngayDat.HeaderText = "Ngày đặt";
+            this.ngayDat.Name = "ngayDat";
+            // 
             // frmFind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -131,5 +164,9 @@
         private System.Windows.Forms.Label lbNgayDat;
         private System.Windows.Forms.Label lbMaNV;
         private System.Windows.Forms.Button btnTK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maDH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maKH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngayDat;
     }
 }
