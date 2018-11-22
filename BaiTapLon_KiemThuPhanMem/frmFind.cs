@@ -42,22 +42,22 @@ namespace BaiTapLon_KiemThuPhanMem
         {
             String sql = "SELECT * FROM DonHang";
             String dk = "";
-            //Tim theo MaNV khac rong
+            //Tìm theo MaNV khác rỗng
             if (txtMaNV.Text.Trim() != "")
             {
                 dk += " MaNV LIKE '%" + txtMaNV.Text + "%'";
             }
-            //kiem tra NgayDat va MaNV khac rong
+            //Kiểm tra NgayDat và MaNV khác rỗng
             if (txtNgayDat.Text.Trim() != "" && dk != "")
             {
                 dk += " AND NgayDat LIKE N'%" + txtNgayDat.Text + "%'";
             }
-            //Tim kiem theo NgayDat khi MaKH la rong
+            //Tìm kiếm theo NgayDat khi MaNV là rỗng
             if (txtNgayDat.Text.Trim() != "" && dk == "")
             {
                 dk += " NgayDat LIKE N'%" + txtNgayDat.Text + "%'";
             }
-            //Ket hoi dk
+            //Kết hỏi dk
             if (dk != "")
             {
                 sql += " WHERE" + dk;
